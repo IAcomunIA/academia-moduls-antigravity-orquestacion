@@ -1,0 +1,95 @@
+{
+    "level_id": 6,
+    "title": "Agentes en Paralelo: Sincronización Masiva",
+    "slug": "manager-parallel",
+    "character": "La Mente Colmena",
+    "character_emoji": "⚡",
+    "character_color": "#FF00FF",
+    "intro_dialogue": [
+        {
+            "speaker": "La Mente Colmena",
+            "text": "Uno es lento. Muchos son imparables. Bienvenido a la ejecución paralela.",
+            "emotion": "excited"
+        },
+        {
+            "speaker": "La Mente Colmena",
+            "text": "Un 'Manager Agent' es como un CEO: no hace el trabajo, pero decide quién lo hace y junta todas las piezas al final.",
+            "emotion": "explaining"
+        },
+        {
+            "speaker": "La Mente Colmena",
+            "text": "Si tienes que analizar 5 documentos, ¿por qué hacerlo uno por uno si puedes tener 5 agentes haciéndolo a la vez?",
+            "emotion": "serious"
+        }
+    ],
+    "theory": {
+        "sections": [
+            {
+                "id": "sequential-vs-parallel",
+                "title": "Secuencial vs Paralelo",
+                "icon": "🛤️",
+                "content": "En la ejecución secuencial, el paso B debe esperar al A. En paralelo, lanzamos múltiples agentes simultáneamente para tareas independientes.",
+                "key_points": [
+                    "Secuencial: Ideal cuando hay dependencias críticas (ej. primero compilar, luego testear).",
+                    "Paralelo: Ideal para procesamiento masivo (ej. resumir 10 noticias a la vez).",
+                    "Ahorro de tiempo: El tiempo total es el de la tarea más larga, no la suma de todas."
+                ]
+            },
+            {
+                "id": "open-manager",
+                "title": "El Agente Manager (Open Manager)",
+                "icon": "🧠",
+                "content": "El Open Manager es un agente especializado en delegar. Recibe un objetivo complejo, lo divide en sub-tareas y supervisa el output de los agentes ejecutores.",
+                "code_example": "## MANAGER ROLE: Research Coordinator\n- Divide el tema en: Historia, Economía y Tecnología.\n- Lanza 3 agentes especialistas en paralelo.\n- Consolida los 3 reportes en un documento final.",
+                "key_points": [
+                    "Evita el cuello de botella del procesamiento único.",
+                    "Permite usar modelos más pequeños/baratos para sub-tareas.",
+                    "Garantiza que el resultado final sea coherente."
+                ]
+            }
+        ]
+    },
+    "exercise": {
+        "type": "sorting",
+        "title": "Configura el Flujo Paralelo",
+        "instruction": "Arrastra los pasos para indicar qué se puede ejecutar en paralelo (P) y qué debe ser secuencial (S).",
+        "items": [
+            {
+                "text": "Entender solicitud del usuario",
+                "type": "S",
+                "order": 1
+            },
+            {
+                "text": "Agente A: Buscar info en Web",
+                "type": "P",
+                "group": "fetch",
+                "order": 2
+            },
+            {
+                "text": "Agente B: Buscar info en PDF",
+                "type": "P",
+                "group": "fetch",
+                "order": 2
+            },
+            {
+                "text": "Consolidar información",
+                "type": "S",
+                "order": 3
+            },
+            {
+                "text": "Generar Reporte Final",
+                "type": "S",
+                "order": 4
+            }
+        ]
+    },
+    "rewards": {
+        "xp": 250,
+        "badge": {
+            "id": "maestro-paralelo",
+            "name": "Maestro de Sinergia",
+            "emoji": "⚡",
+            "description": "Dominaste la ejecución masiva en paralelo"
+        }
+    }
+}

@@ -1,0 +1,84 @@
+{
+    "level_id": 5,
+    "title": "Skills & Rules: El DNA del Comportamiento",
+    "slug": "skills-rules",
+    "character": "El Guardián",
+    "character_emoji": "🛡️",
+    "character_color": "#FFD700",
+    "intro_dialogue": [
+        {
+            "speaker": "El Guardián",
+            "text": "Bienvenido al núcleo de control, cadete. Soy El Guardián de las Reglas Globales.",
+            "emotion": "serious"
+        },
+        {
+            "speaker": "El Guardián",
+            "text": "Un agente sin Skills es como un trabajador sin herramientas, y sin Reglas Globales es un caos sin ética.",
+            "emotion": "explaining"
+        },
+        {
+            "speaker": "El Guardián",
+            "text": "Aquí aprenderás a encapsular comportamientos reutilizables para que tus agentes sean consistentes en todo momento.",
+            "emotion": "excited"
+        }
+    ],
+    "theory": {
+        "sections": [
+            {
+                "id": "skills-vs-instructions",
+                "title": "Instructions vs Skills",
+                "icon": "🛠️",
+                "content": "Las instrucciones son órdenes ad-hoc para una tarea. Las SKILLS son bibliotecas de comportamiento reutilizables. Si un agente sabe 'Escribir Código Limpio', eso es una Skill que puede llevar de un proyecto a otro.",
+                "key_points": [
+                    "Skills: Comportamientos modulares y portables",
+                    "Ahorran tokens al no repetir instrucciones comunes",
+                    "Permiten actualizar el comportamiento de 50 agentes editando un solo archivo .skill"
+                ]
+            },
+            {
+                "id": "global-rules",
+                "title": "Reglas Globales: La Constitución",
+                "icon": "⚖️",
+                "content": "Las Reglas Globales son leyes que NINGÚN agente puede violar, sin importar su tarea específica. Son ideales para definir el idioma, el tono de marca o restricciones de seguridad.",
+                "code_example": "# GLOBAL RULES\n- Idioma: Siempre Español Técnico\n- Tono: Profesional pero cercano\n- Seguridad: Nunca revelar llaves API",
+                "key_points": [
+                    "Se aplican a toda la orquestación",
+                    "Evitan alucinaciones de comportamiento",
+                    "Definen la personalidad base del sistema"
+                ]
+            }
+        ]
+    },
+    "exercise": {
+        "type": "code_editor",
+        "instruction": "Crea una SKILL llamada 'Editor-Estilo' que obligue al agente a usar Markdown y un tono sarcástico pero útil.",
+        "template": "# SKILL: Editor-Estilo\n\n## Propósito\n[???]\n\n## Reglas de Comportamiento\n- [???]\n- [???]\n\n## Restricciones\n- [???]",
+        "validation": {
+            "type": "contains_all",
+            "required_fields": [
+                "SKILL: Editor-Estilo",
+                "Propósito",
+                "Reglas de Comportamiento",
+                "Restricciones"
+            ],
+            "min_length": 150,
+            "forbidden_words": [
+                "[???]"
+            ],
+            "hints": [
+                "El propósito debe mencionar el estilo de edición",
+                "En reglas, usa guiones para definir el tono sarcástico",
+                "En restricciones, prohíbe el uso de texto plano"
+            ]
+        }
+    },
+    "rewards": {
+        "xp": 250,
+        "badge": {
+            "id": "arquitecto-skills",
+            "name": "Arquitecto de Skills",
+            "emoji": "📜",
+            "description": "Dominaste la creación de comportamientos reutilizables"
+        }
+    }
+}

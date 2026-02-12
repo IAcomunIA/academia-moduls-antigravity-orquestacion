@@ -1,0 +1,188 @@
+{
+    "level_id": 4,
+    "title": "Output: El Resultado Tangible",
+    "slug": "output",
+    "character": "TheCommunicator",
+    "character_emoji": "📦",
+    "character_color": "#10B981",
+    "intro_dialogue": [
+        {
+            "speaker": "TheCommunicator",
+            "text": "¡Hola! Soy TheCommunicator. Yo me encargo de que todo lo que producen los agentes llegue al destino correcto.",
+            "emotion": "greeting"
+        },
+        {
+            "speaker": "TheCommunicator",
+            "text": "El Output es la capa final: donde todo el trabajo se materializa en archivos reales, listos para usar.",
+            "emotion": "explaining"
+        },
+        {
+            "speaker": "TheCommunicator",
+            "text": "Un buen output no es solo 'que funcione'. Debe ser verificable, documentado y reproducible.",
+            "emotion": "serious"
+        },
+        {
+            "speaker": "TheCommunicator",
+            "text": "Vamos a aprender sobre validación de calidad, logging y entrega final. ¡La última pieza del rompecabezas!",
+            "emotion": "excited"
+        }
+    ],
+    "theory": {
+        "sections": [
+            {
+                "id": "que-es-output",
+                "title": "¿Qué es la Capa de Output?",
+                "icon": "📦",
+                "content": "La capa de output es donde los resultados de cada agente se materializan. Incluye los archivos generados, la documentación, los logs de ejecución y el reporte de calidad.",
+                "key_points": [
+                    "Todo output se guarda en .tmp/outputs/ primero",
+                    "Ningún output va directamente a producción",
+                    "Cada archivo tiene trazabilidad: quién lo creó y cuándo",
+                    "Los outputs se validan antes de aprobar"
+                ]
+            },
+            {
+                "id": "logging-trazabilidad",
+                "title": "Logging y Trazabilidad",
+                "icon": "📊",
+                "content": "Cada acción de cada agente se registra con timestamps, estados y detalles. Esto permite debuggear problemas y entender exactamente qué pasó en cada ejecución.",
+                "code_example": "// Ejemplo de log estructurado\n{\n  \"checkpoint_id\": 4,\n  \"agent\": \"component-builder\",\n  \"status\": \"COMPLETED\",\n  \"started_at\": \"2026-02-10T10:05:30Z\",\n  \"completed_at\": \"2026-02-10T10:07:15Z\",\n  \"outputs\": [\n    \"Button.vue\",\n    \"Card.vue\",\n    \"Modal.vue\"\n  ],\n  \"execution_time_seconds\": 105,\n  \"errors\": []\n}",
+                "key_points": [
+                    "Timestamp de inicio y fin de cada checkpoint",
+                    "Estado: RUNNING → COMPLETED | FAILED | BLOCKED",
+                    "Lista de outputs generados",
+                    "Errores capturados con stack trace",
+                    "Tiempo de ejecución para optimización"
+                ]
+            },
+            {
+                "id": "validacion-calidad",
+                "title": "Validación de Calidad",
+                "icon": "✅",
+                "content": "Antes de entregar, un agente de QA verifica todo: que el texto esté en español, que los colores sean de la paleta, que los componentes compilen y que la app sea accesible.",
+                "key_points": [
+                    "Idioma: Todo en español",
+                    "Props validados en cada componente",
+                    "Colores de la paleta del skill",
+                    "Responsive en 3 viewports (mobile, tablet, desktop)",
+                    "Build de producción sin errores",
+                    "0 errores críticos = aprobado"
+                ]
+            },
+            {
+                "id": "ciclo-completo",
+                "title": "El Ciclo Completo: 4 Capas",
+                "icon": "🔄",
+                "content": "Ahora puedes ver el panorama completo: Directiva → Orquestador → Agentes → Output. Cada capa alimenta a la siguiente, creando un flujo predecible y escalable.",
+                "key_points": [
+                    "Capa 1 - Directiva: Define QUÉ hacer",
+                    "Capa 2 - Orquestador: Define el ORDEN",
+                    "Capa 3 - Agentes: Ejecutan tareas específicas",
+                    "Capa 4 - Output: Resultado verificable",
+                    "El humano aprueba al final → producción"
+                ]
+            }
+        ]
+    },
+    "exercise": {
+        "type": "code_editor",
+        "instruction": "Define un pipeline completo de las 4 capas para una mini-app de calculadora. Escribe la directiva, 2 checkpoints del orquestador, 2 agentes y describe el output esperado.",
+        "template": "# PIPELINE COMPLETO: Calculadora App\n\n## CAPA 1: DIRECTIVA\n**Objetivo:** [???]\n**Alcance:** [???]\n\n## CAPA 2: ORQUESTADOR\n### Checkpoint 1: [???]\n### Checkpoint 2: [???]\n\n## CAPA 3: AGENTES\n### Agente 1: [???]\n**Responsabilidad:** [???]\n### Agente 2: [???]\n**Responsabilidad:** [???]\n\n## CAPA 4: OUTPUT\n**Archivos generados:** [???]\n**Validación:** [???]",
+        "validation": {
+            "type": "contains_all",
+            "required_fields": [
+                "DIRECTIVA",
+                "ORQUESTADOR",
+                "AGENTES",
+                "OUTPUT",
+                "Objetivo",
+                "Responsabilidad"
+            ],
+            "min_length": 300,
+            "forbidden_words": [
+                "[???]"
+            ],
+            "hints": [
+                "La directiva debe ser sobre una calculadora funcional",
+                "Los checkpoints podrían ser: UI y Lógica",
+                "Un agente podría encargarse del diseño y otro de la lógica",
+                "El output incluye archivos y criterio de validación"
+            ]
+        }
+    },
+    "minigame": {
+        "type": "quiz",
+        "title": "Quiz Final: Las 4 Capas",
+        "questions": [
+            {
+                "question": "¿Cuál es el documento de más alto nivel en el sistema?",
+                "options": [
+                    "Orquestador",
+                    "Directiva",
+                    "Agente",
+                    "Output"
+                ],
+                "correct": 1
+            },
+            {
+                "question": "¿Quién decide el orden de ejecución de los checkpoints?",
+                "options": [
+                    "La Directiva",
+                    "El Agente",
+                    "El Orquestador",
+                    "El Output"
+                ],
+                "correct": 2
+            },
+            {
+                "question": "¿Cómo se comunican los agentes entre sí?",
+                "options": [
+                    "Mensajes directos",
+                    "API REST",
+                    "A través de archivos (indirectamente)",
+                    "No se comunican"
+                ],
+                "correct": 2
+            },
+            {
+                "question": "¿Dónde se guardan los outputs antes de ir a producción?",
+                "options": [
+                    "src/",
+                    "production/",
+                    ".tmp/outputs/",
+                    "dist/"
+                ],
+                "correct": 2
+            },
+            {
+                "question": "¿Qué pasa si un checkpoint falla dos veces?",
+                "options": [
+                    "Se ignora",
+                    "Estado BLOCKED, espera humano",
+                    "Se salta al siguiente",
+                    "Se reinicia todo"
+                ],
+                "correct": 1
+            }
+        ]
+    },
+    "rewards": {
+        "xp": 300,
+        "badge": {
+            "id": "ingeniero-de-sistemas",
+            "name": "Ingeniero de Sistemas",
+            "emoji": "🏗️",
+            "description": "Dominaste las 4 capas del sistema de agentes IA"
+        },
+        "module_completion_bonus": {
+            "xp": 200,
+            "badge": {
+                "id": "modulo-1-completado",
+                "name": "Explorador de Capas",
+                "emoji": "🚀",
+                "description": "¡Completaste el Módulo 1: Las 4 Capas!"
+            }
+        }
+    },
+    "next_level": "/module-1/completion"
+}

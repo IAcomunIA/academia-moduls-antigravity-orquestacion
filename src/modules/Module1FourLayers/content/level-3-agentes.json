@@ -1,0 +1,137 @@
+{
+    "level_id": 3,
+    "title": "Agentes: Tu Equipo Especializado",
+    "slug": "agentes",
+    "character": "TheTeam",
+    "character_emoji": "👥",
+    "character_color": "#6366F1",
+    "intro_dialogue": [
+        {
+            "speaker": "TheTeam",
+            "text": "¡Somos TheTeam! Representamos a todos los agentes especializados que trabajan en un proyecto.",
+            "emotion": "greeting"
+        },
+        {
+            "speaker": "TheTeam",
+            "text": "Cada agente es un especialista con una responsabilidad única. Igual que un equipo de astronautas: uno pilotea, otro navega, otro repara.",
+            "emotion": "explaining"
+        },
+        {
+            "speaker": "TheTeam",
+            "text": "La clave es: hacer UNA cosa bien. Un agente que intenta hacerlo todo termina haciendo nada correctamente.",
+            "emotion": "serious"
+        },
+        {
+            "speaker": "TheTeam",
+            "text": "Vamos a diseñar agentes que trabajan juntos como un reloj suizo. ¡Cada engranaje cuenta!",
+            "emotion": "excited"
+        }
+    ],
+    "theory": {
+        "sections": [
+            {
+                "id": "que-es-agente",
+                "title": "¿Qué es un Agente?",
+                "icon": "🤖",
+                "content": "Un agente es una unidad de trabajo especializada definida en un archivo Markdown. Tiene un nombre, una responsabilidad única, inputs claros, outputs esperados y un script de ejecución.",
+                "key_points": [
+                    "Un agente = Una responsabilidad",
+                    "Se define en un archivo .md dentro de agents/",
+                    "Recibe inputs del checkpoint anterior",
+                    "Produce outputs verificables",
+                    "No conoce el panorama completo, solo su tarea"
+                ]
+            },
+            {
+                "id": "anatomia-agente",
+                "title": "Anatomía de un Agente",
+                "icon": "🔬",
+                "content": "Un agente bien definido contiene secciones claras que cualquier sistema puede interpretar.",
+                "code_example": "# AGENTE: component-builder\n\n## Responsabilidad\nCrear componentes Vue reutilizables\n\n## Inputs\n- Sistema de diseño (tailwind.config.js)\n- Skill de estilo visual\n\n## Outputs\n- src/components/ui/Button.vue\n- src/components/ui/Card.vue\n- src/components/ui/Modal.vue\n\n## Reglas\n- Usar Composition API con <script setup>\n- Props validados\n- Solo clases de Tailwind\n- Comentarios en español\n\n## Validación\n- Archivos .vue existen\n- Syntax válida\n- Imports correctos",
+                "key_points": [
+                    "Responsabilidad: UNA frase que define su misión",
+                    "Inputs: Qué recibe y de dónde",
+                    "Outputs: Lista exacta de archivos que produce",
+                    "Reglas: Restricciones técnicas del agente",
+                    "Validación: Cómo verificar que hizo bien su trabajo"
+                ]
+            },
+            {
+                "id": "comunicacion-agentes",
+                "title": "Comunicación entre Agentes",
+                "icon": "📡",
+                "content": "Los agentes no hablan entre sí directamente. Se comunican a través de archivos: el output de uno es el input del siguiente. El orquestador coordina este flujo.",
+                "key_points": [
+                    "Comunicación indirecta: a través de archivos",
+                    "El orquestador es el mediador",
+                    "Un agente nunca modifica el output de otro",
+                    "Si algo falla, el orquestador decide qué hacer",
+                    "Los logs permiten rastrear qué hizo cada agente"
+                ]
+            }
+        ]
+    },
+    "exercise": {
+        "type": "code_editor",
+        "instruction": "Define un agente especializado en crear la página de inicio (Home) de una aplicación. Incluye responsabilidad, inputs, outputs, reglas y validación.",
+        "template": "# AGENTE: [???]\n\n## Responsabilidad\n[???]\n\n## Inputs\n- [???]\n- [???]\n\n## Outputs\n- [???]\n\n## Reglas\n- [???]\n- [???]\n- [???]\n\n## Validación\n- [???]\n- [???]",
+        "validation": {
+            "type": "contains_all",
+            "required_fields": [
+                "AGENTE",
+                "Responsabilidad",
+                "Inputs",
+                "Outputs",
+                "Reglas",
+                "Validación"
+            ],
+            "min_length": 200,
+            "forbidden_words": [
+                "[???]"
+            ],
+            "hints": [
+                "El nombre del agente debe ser descriptivo: home-page-builder",
+                "La responsabilidad es UNA frase concreta",
+                "Los inputs vienen de checkpoints anteriores",
+                "Los outputs son archivos específicos"
+            ]
+        }
+    },
+    "minigame": {
+        "type": "matching",
+        "title": "Conecta Agente con Responsabilidad",
+        "instruction": "Conecta cada agente con su responsabilidad correcta.",
+        "pairs": [
+            {
+                "agent": "structure-creator",
+                "responsibility": "Crear carpetas y archivos base"
+            },
+            {
+                "agent": "design-system-agent",
+                "responsibility": "Aplicar paleta de colores y tipografías"
+            },
+            {
+                "agent": "component-builder",
+                "responsibility": "Crear componentes Vue reutilizables"
+            },
+            {
+                "agent": "content-generator",
+                "responsibility": "Generar textos y contenido educativo"
+            },
+            {
+                "agent": "qa-validator",
+                "responsibility": "Ejecutar tests de calidad"
+            }
+        ]
+    },
+    "rewards": {
+        "xp": 250,
+        "badge": {
+            "id": "lider-de-equipo",
+            "name": "Líder de Equipo",
+            "emoji": "👥",
+            "description": "Definiste agentes especializados con responsabilidad única"
+        }
+    },
+    "next_level": "/module-1/level-4"
+}

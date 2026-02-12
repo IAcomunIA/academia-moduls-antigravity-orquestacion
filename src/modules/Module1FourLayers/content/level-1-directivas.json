@@ -1,0 +1,136 @@
+{
+    "level_id": 1,
+    "title": "Directivas: El Corazón del Agente",
+    "slug": "directivas",
+    "character": "TheMaestro",
+    "character_emoji": "🧙‍♂️",
+    "character_color": "#00F0FF",
+    "intro_dialogue": [
+        {
+            "speaker": "TheMaestro",
+            "text": "¡Bienvenido, aprendiz! Soy TheMaestro, y voy a enseñarte la primera capa del sistema de agentes IA.",
+            "emotion": "greeting"
+        },
+        {
+            "speaker": "TheMaestro",
+            "text": "Las DIRECTIVAS son el documento fundacional. Son como la constitución de tu agente: definen quién es, qué puede hacer y qué límites tiene.",
+            "emotion": "explaining"
+        },
+        {
+            "speaker": "TheMaestro",
+            "text": "Sin una directiva clara, un agente IA es como un cohete sin rumbo. Potente, pero peligroso.",
+            "emotion": "serious"
+        },
+        {
+            "speaker": "TheMaestro",
+            "text": "¿Listo para construir tu primera directiva? ¡Vamos allá!",
+            "emotion": "excited"
+        }
+    ],
+    "theory": {
+        "sections": [
+            {
+                "id": "que-es-directiva",
+                "title": "¿Qué es una Directiva?",
+                "icon": "📜",
+                "content": "Una directiva es un documento en formato Markdown que define la identidad, misión, alcance y restricciones de un proyecto de agentes IA. Es lo primero que se crea y todo lo demás se construye sobre ella.",
+                "key_points": [
+                    "Es el documento de más alto nivel en la jerarquía",
+                    "Define el QUÉ, no el CÓMO",
+                    "Establece límites claros para el agente",
+                    "Debe ser concisa, sin ambigüedades"
+                ]
+            },
+            {
+                "id": "estructura-directiva",
+                "title": "Estructura de una Directiva",
+                "icon": "🏗️",
+                "content": "Una directiva bien escrita tiene secciones claras que cualquier agente puede interpretar sin ambigüedad.",
+                "code_example": "# DIRECTIVA MAESTRA: [Nombre del Proyecto]\n\n## Objetivo\n[Descripción clara del objetivo principal]\n\n## Alcance\n- ✅ Lo que SÍ debe hacer\n- ❌ Lo que NO debe hacer\n\n## Restricciones\n- Idioma: Español\n- Framework: Vue 3\n- Sin dependencias externas innecesarias\n\n## Resultado Esperado\n[Descripción del output final]",
+                "key_points": [
+                    "Objetivo: Una sola frase que resuma la misión",
+                    "Alcance: Lista explícita de inclusiones y exclusiones",
+                    "Restricciones: Tecnologías, idioma, límites",
+                    "Resultado: Qué se espera al final"
+                ]
+            },
+            {
+                "id": "errores-comunes",
+                "title": "Errores Comunes",
+                "icon": "⚠️",
+                "content": "Estos son los errores que los principiantes cometen al escribir directivas. ¡Evítalos!",
+                "key_points": [
+                    "❌ Ser demasiado vago: 'Haz algo bonito'",
+                    "❌ Mezclar QUÉ con CÓMO: 'Usa React con useState...'",
+                    "❌ No definir restricciones: el agente inventará las suyas",
+                    "❌ Directivas de 10 páginas: más no es mejor"
+                ]
+            }
+        ]
+    },
+    "exercise": {
+        "type": "code_editor",
+        "instruction": "Completa la directiva maestra para un proyecto de lista de tareas inteligente. Rellena las secciones marcadas con [???].",
+        "template": "# DIRECTIVA MAESTRA: TaskFlow AI\n\n## Objetivo\n[???]\n\n## Alcance\n- ✅ [???]\n- ✅ Priorización automática de tareas\n- ❌ [???]\n- ❌ Enviar emails o notificaciones push\n\n## Restricciones\n- Idioma: [???]\n- Datos: Solo localStorage\n\n## Resultado Esperado\n[???]",
+        "validation": {
+            "type": "contains_all",
+            "required_fields": [
+                "Objetivo",
+                "Alcance",
+                "Restricciones",
+                "Resultado Esperado"
+            ],
+            "min_length": 200,
+            "forbidden_words": [
+                "[???]"
+            ],
+            "hints": [
+                "El objetivo debe ser una frase concreta sobre gestión de tareas",
+                "En Alcance ✅ piensa en lo que SÍ hace la app",
+                "En Alcance ❌ piensa en lo que queda FUERA",
+                "El idioma debe ser Español"
+            ]
+        }
+    },
+    "minigame": {
+        "type": "drag_and_drop",
+        "title": "Ordena la Directiva",
+        "instruction": "Arrastra cada elemento a la sección correcta de la directiva.",
+        "items": [
+            {
+                "text": "Crear una plataforma educativa gamificada",
+                "correct_zone": "Objetivo"
+            },
+            {
+                "text": "Módulo 1 con 4 niveles interactivos",
+                "correct_zone": "Alcance ✅"
+            },
+            {
+                "text": "No incluir sistema de pagos",
+                "correct_zone": "Alcance ❌"
+            },
+            {
+                "text": "Vue 3 + Tailwind CSS",
+                "correct_zone": "Restricciones"
+            },
+            {
+                "text": "App funcional con Módulo 1 completo",
+                "correct_zone": "Resultado Esperado"
+            },
+            {
+                "text": "Usar solo localStorage",
+                "correct_zone": "Restricciones"
+            }
+        ]
+    },
+    "rewards": {
+        "xp": 150,
+        "badge": {
+            "id": "arquitecto-directivas",
+            "name": "Arquitecto de Directivas",
+            "emoji": "📜",
+            "description": "Completaste tu primera directiva maestra"
+        }
+    },
+    "next_level": "/module-1/level-2"
+}

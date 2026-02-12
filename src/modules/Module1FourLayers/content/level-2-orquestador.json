@@ -1,0 +1,134 @@
+{
+    "level_id": 2,
+    "title": "El Orquestador: Director de la Sinfonía",
+    "slug": "orquestador",
+    "character": "TheCoordinator",
+    "character_emoji": "🎼",
+    "character_color": "#8B5CF6",
+    "intro_dialogue": [
+        {
+            "speaker": "TheCoordinator",
+            "text": "¡Hola! Soy TheCoordinator. Si la directiva es la partitura, yo soy el director de orquesta.",
+            "emotion": "greeting"
+        },
+        {
+            "speaker": "TheCoordinator",
+            "text": "El Orquestador toma la directiva y la descompone en pasos ordenados. Define QUÉ agente hace QUÉ y en QUÉ orden.",
+            "emotion": "explaining"
+        },
+        {
+            "speaker": "TheCoordinator",
+            "text": "Sin un buen orquestador, tus agentes trabajarían en caos. Imagina una orquesta donde cada músico toca lo que quiere... 🎵💥",
+            "emotion": "warning"
+        },
+        {
+            "speaker": "TheCoordinator",
+            "text": "Vamos a aprender a diseñar flujos de ejecución con checkpoints. ¡Cada paso verificable!",
+            "emotion": "excited"
+        }
+    ],
+    "theory": {
+        "sections": [
+            {
+                "id": "que-es-orquestador",
+                "title": "¿Qué es un Orquestador?",
+                "icon": "🎯",
+                "content": "Un orquestador es el documento que define el flujo de ejecución completo de un proyecto. Convierte la directiva abstracta en pasos concretos y ordenados, asignando cada tarea a un agente específico.",
+                "key_points": [
+                    "Lee la directiva y la traduce en checkpoints",
+                    "Asigna agentes a cada checkpoint",
+                    "Define criterios de avance entre pasos",
+                    "Maneja errores y reintentos"
+                ]
+            },
+            {
+                "id": "checkpoints",
+                "title": "Checkpoints: Puntos de Control",
+                "icon": "🔖",
+                "content": "Los checkpoints son puntos de verificación en el flujo. Cada uno tiene un objetivo claro, un agente responsable y criterios de éxito/fallo.",
+                "code_example": "## CHECKPOINT 3: Sistema de Diseño\n\n**Objetivo:** Aplicar estilos visuales\n**Agente:** design-system-agent\n\n**Inputs:**\n- Skill de estilo visual\n\n**Outputs:**\n- tailwind.config.js\n- main.css\n\n**Criterio de avance:**\n- ✅ CSS compila → CHECKPOINT 4\n- ❌ Error → Reintentar → Si falla → BLOCKED",
+                "key_points": [
+                    "Cada checkpoint tiene UN objetivo claro",
+                    "Define inputs (qué necesita) y outputs (qué produce)",
+                    "Incluye criterios de éxito y fallo",
+                    "Los checkpoints son secuenciales o paralelos"
+                ]
+            },
+            {
+                "id": "tipos-ejecucion",
+                "title": "Tipos de Ejecución",
+                "icon": "⚡",
+                "content": "Un orquestador puede ejecutar checkpoints de forma secuencial (uno tras otro) o paralela (varios al mismo tiempo). La elección depende de las dependencias entre tareas.",
+                "key_points": [
+                    "Secuencial: Checkpoint B depende de A → uno tras otro",
+                    "Paralelo: A y B son independientes → ejecutar al mismo tiempo",
+                    "Híbrido: Grupos paralelos con dependencias secuenciales",
+                    "MVP siempre empieza secuencial (más seguro)"
+                ]
+            }
+        ]
+    },
+    "exercise": {
+        "type": "code_editor",
+        "instruction": "Diseña un orquestador con 3 checkpoints para construir una landing page. Define objetivo, agente y criterio de avance para cada uno.",
+        "template": "# ORQUESTADOR: Landing Page\n\n## CHECKPOINT 1: [???]\n**Objetivo:** [???]\n**Agente:** [???]\n**Criterio:** ✅ [???] → CP2\n\n## CHECKPOINT 2: [???]\n**Objetivo:** [???]\n**Agente:** [???]\n**Criterio:** ✅ [???] → CP3\n\n## CHECKPOINT 3: [???]\n**Objetivo:** [???]\n**Agente:** [???]\n**Criterio:** ✅ [???] → COMPLETADO",
+        "validation": {
+            "type": "contains_all",
+            "required_fields": [
+                "CHECKPOINT 1",
+                "CHECKPOINT 2",
+                "CHECKPOINT 3",
+                "Objetivo",
+                "Agente",
+                "Criterio"
+            ],
+            "min_length": 250,
+            "forbidden_words": [
+                "[???]"
+            ],
+            "hints": [
+                "CP1 podría ser la estructura HTML base",
+                "CP2 podría ser los estilos y diseño visual",
+                "CP3 podría ser el contenido y optimización",
+                "Cada agente debe tener un nombre descriptivo"
+            ]
+        }
+    },
+    "minigame": {
+        "type": "sorting",
+        "title": "Ordena los Checkpoints",
+        "instruction": "Pon estos checkpoints en el orden correcto para construir una app.",
+        "items": [
+            {
+                "text": "Validar calidad y tests",
+                "correct_position": 5
+            },
+            {
+                "text": "Crear estructura de carpetas",
+                "correct_position": 1
+            },
+            {
+                "text": "Generar componentes UI",
+                "correct_position": 3
+            },
+            {
+                "text": "Scaffolding del proyecto",
+                "correct_position": 2
+            },
+            {
+                "text": "Integración y routing",
+                "correct_position": 4
+            }
+        ]
+    },
+    "rewards": {
+        "xp": 200,
+        "badge": {
+            "id": "maestro-orquestacion",
+            "name": "Maestro de Orquestación",
+            "emoji": "🎼",
+            "description": "Diseñaste tu primer flujo con checkpoints"
+        }
+    },
+    "next_level": "/module-1/level-3"
+}

@@ -1,0 +1,65 @@
+{
+    "id": "level-bonus-tools",
+    "title": "Herramientas y Trucos Avanzados",
+    "description": "Domina el entorno de Antigravity con archivos de configuración y comandos especiales.",
+    "sections": [
+        {
+            "id": "section-1",
+            "title": "Archivos de Configuración Esenciales",
+            "content": "Para que tus agentes funcionen correctamente, es vital entender la estructura de archivos de configuración.",
+            "slides": [
+                {
+                    "type": "concept",
+                    "title": "agents.md",
+                    "content": "Este archivo define la *identidad* y *rol* de cada agente en tu sistema. Aquí especificas sus capacidades, limitaciones y estilo de comunicación."
+                },
+                {
+                    "type": "concept",
+                    "title": "gemini.md / claude.md",
+                    "content": "Son archivos de instrucciones específicas para los modelos (LLMs). Definen cómo debe comportarse el modelo subyacente (Gemini o Claude) para alinearse con tus objetivos. Úsalos para prompts de sistema globales."
+                }
+            ]
+        },
+        {
+            "id": "section-2",
+            "title": "Comandos de Contexto (@)",
+            "content": "El poder real de Antigravity reside en cómo invocas el contexto. Usa el símbolo '@' para traer información específica a tu prompt.",
+            "slides": [
+                {
+                    "type": "code",
+                    "title": "Invocación de Contexto",
+                    "language": "markdown",
+                    "code": "@codeContext: Trae el contexto general del código activo.\n@file: Referencia un archivo específico.\n@directory: Lee todo el contenido de una carpeta.\n@mcp: Invoca herramientas del Model Context Protocol.\n@rules: Aplica las reglas globales del proyecto.\n@conversation: Referencia el historial de chat actual.\n@terminal: Lee la salida o estado de la terminal."
+                },
+                {
+                    "type": "tip",
+                    "title": "Tip Pro",
+                    "content": "Combinar contextos es la clave. Por ejemplo: 'Analiza @file:main.py usando las reglas de @rules:security.md'."
+                }
+            ]
+        },
+        {
+            "id": "section-3",
+            "title": "Estructura de Publicidad",
+            "content": "Para proyectos comerciales, puedes organizar tus assets gráficamente.",
+            "slides": [
+                {
+                    "type": "concept",
+                    "title": "@publicidad-assets",
+                    "content": "Una referencia rápida a tu carpeta de imágenes de marketing. Mantén tus banners y promociones organizados y accesibles para el agente de marketing."
+                }
+            ]
+        }
+    ],
+    "quiz": {
+        "question": "¿Qué comando usarías para referenciar un archivo específico en tu prompt?",
+        "options": [
+            "@context",
+            "@file",
+            "@read",
+            "@import"
+        ],
+        "correctAnswer": 1,
+        "explanation": "@file es el comando dedicado para leer e inyectar el contenido de un archivo específico en el contexto del LLM."
+    }
+}

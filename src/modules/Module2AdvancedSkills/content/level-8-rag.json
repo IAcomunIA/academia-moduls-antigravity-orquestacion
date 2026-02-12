@@ -1,0 +1,87 @@
+{
+    "level_id": 8,
+    "title": "Memory & RAG: Conocimiento Infinito",
+    "slug": "memory-rag",
+    "character": "La Archivista",
+    "character_emoji": "🧠",
+    "character_color": "#FF69B4",
+    "intro_dialogue": [
+        {
+            "speaker": "La Archivista",
+            "text": "Bienvenido al archivo maestro, cadete. Aquí el conocimiento no tiene límites.",
+            "emotion": "greeting"
+        },
+        {
+            "speaker": "La Archivista",
+            "text": "La memoria de un agente es limitada por su ventana de contexto, pero con RAG, podemos darle acceso a petabytes de información.",
+            "emotion": "explaining"
+        },
+        {
+            "speaker": "La Archivista",
+            "text": "¿Listo para aprender cómo buscar entre millones de documentos en milisegundos?",
+            "emotion": "excited"
+        }
+    ],
+    "theory": {
+        "sections": [
+            {
+                "id": "que-es-rag",
+                "title": "¿Qué es RAG?",
+                "icon": "📚",
+                "content": "RAG (Retrieval-Augmented Generation) es una técnica que permite al agente recuperar información relevante de una base de datos externa antes de generar una respuesta. Esto evita alucinaciones y permite trabajar con datos actualizados.",
+                "key_points": [
+                    "Retrieval: Buscar la info.",
+                    "Augmentation: Añadir esa info al contexto del prompt.",
+                    "Generation: Generar la respuesta basada en la info real."
+                ]
+            },
+            {
+                "id": "embeddings-vectors",
+                "title": "Embeddings y Vectores",
+                "icon": "🔢",
+                "content": "Para que la IA 'entienda' qué texto es similar a otro, convertimos las palabras en vectores (listas de números). A esto lo llamamos Embeddings. La búsqueda se hace por cercanía matemática.",
+                "key_points": [
+                    "Búsqueda semántica: Encuentra significados, no solo palabras clave.",
+                    "Vector DB: Bases de datos especializadas en guardar estos números.",
+                    "Similitud de Coseno: La métrica más común para comparar vectores."
+                ]
+            }
+        ]
+    },
+    "exercise": {
+        "type": "minigame",
+        "title": "El Flujo RAG",
+        "instruction": "Ordena los pasos necesarios para que un agente responda usando RAG.",
+        "items": [
+            {
+                "text": "El usuario hace una pregunta",
+                "order": 1
+            },
+            {
+                "text": "Convertir pregunta en vector (Embedding)",
+                "order": 2
+            },
+            {
+                "text": "Buscar información similar en la Vector DB",
+                "order": 3
+            },
+            {
+                "text": "Añadir la info encontrada al prompt",
+                "order": 4
+            },
+            {
+                "text": "El agente genera la respuesta final",
+                "order": 5
+            }
+        ]
+    },
+    "rewards": {
+        "xp": 350,
+        "badge": {
+            "id": "guardian-memoria",
+            "name": "Guardián de la Memoria",
+            "emoji": "🧠",
+            "description": "Dominaste la arquitectura de memoria infinita RAG"
+        }
+    }
+}

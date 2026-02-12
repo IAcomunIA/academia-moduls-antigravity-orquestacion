@@ -1,0 +1,82 @@
+{
+    "level_id": 7,
+    "title": "MCP & Tools: Conectando con el Mundo",
+    "slug": "mcp-tools",
+    "character": "El Enlace",
+    "character_emoji": "🔌",
+    "character_color": "#00FF7F",
+    "intro_dialogue": [
+        {
+            "speaker": "El Enlace",
+            "text": "¡Hola! Soy El Enlace. Mi trabajo es darles manos y ojos a los agentes en el mundo real.",
+            "emotion": "greeting"
+        },
+        {
+            "speaker": "El Enlace",
+            "text": "Un agente inteligente es fabuloso, pero si no puede leer un archivo o consultar el clima, está atrapado en una burbuja.",
+            "emotion": "explaining"
+        },
+        {
+            "speaker": "El Enlace",
+            "text": "MCP (Model Context Protocol) es el estándar que usamos para que cualquier agente pueda usar CUALQUIER herramienta de forma segura.",
+            "emotion": "excited"
+        }
+    ],
+    "theory": {
+        "sections": [
+            {
+                "id": "que-es-tool-calling",
+                "title": "¿Qué es Tool Calling?",
+                "icon": "🔧",
+                "content": "Tool Calling es la capacidad de un LLM de decidir que necesita una herramienta externa para cumplir una tarea. El modelo no ejecuta el código, sino que genera una solicitud estructurada (JSON) para que el sistema la ejecute por él.",
+                "key_points": [
+                    "El modelo elige la herramienta basada en su descripción.",
+                    "El sistema ejecuta la herramienta y le devuelve el resultado al modelo.",
+                    "Permite realizar acciones reales: enviar emails, buscar en bases de datos, etc."
+                ]
+            },
+            {
+                "id": "mcp-protocol",
+                "title": "Model Context Protocol (MCP)",
+                "icon": "🔌",
+                "content": "MCP es un protocolo abierto que unifica cómo los modelos de IA se conectan con los datos y herramientas. En lugar de escribir un conector para cada modelo, escribes un servidor MCP que sirve a todos.",
+                "code_example": "{\n  \"name\": \"get_weather\",\n  \"description\": \"Obtiene el clima de una ciudad\",\n  \"parameters\": {\n    \"type\": \"object\",\n    \"properties\": {\n      \"city\": { \"type\": \"string\" }\n    }\n  }\n}",
+                "key_points": [
+                    "Estandarización: Un solo lenguaje para todas las herramientas.",
+                    "Seguridad: Control total sobre qué recursos accede el agente.",
+                    "Interoperabilidad: Conecta VS Code, navegadores y bases de datos a tu agente."
+                ]
+            }
+        ]
+    },
+    "exercise": {
+        "type": "code_editor",
+        "instruction": "Define una herramienta (Tool) llamada 'search_knowledge' que acepte un parámetro 'query'. Esta herramienta será usada por el agente para buscar en la base de datos interna.",
+        "template": "{\n  \"name\": \"search_knowledge\",\n  \"description\": \"[???]\",\n  \"parameters\": {\n    \"type\": \"object\",\n    \"properties\": {\n      \"query\": {\n        \"type\": \"string\",\n        \"description\": \"[???]\"\n      }\n    },\n    \"required\": [\"[???]\"]\n  }\n}",
+        "validation": {
+            "type": "json_schema",
+            "required_fields": [
+                "name",
+                "description",
+                "parameters"
+            ],
+            "forbidden_words": [
+                "[???]"
+            ],
+            "hints": [
+                "La descripción debe explicar para qué sirve la búsqueda.",
+                "El parámetro query es obligatorio.",
+                "Usa formato JSON válido."
+            ]
+        }
+    },
+    "rewards": {
+        "xp": 300,
+        "badge": {
+            "id": "tecnico-mcp",
+            "name": "Técnico MCP",
+            "emoji": "🔌",
+            "description": "Conectaste tu primer agente con el mundo real"
+        }
+    }
+}
