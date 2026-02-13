@@ -17,15 +17,31 @@
     </div>
 
     <!-- Publicidad Ebook -->
-    <div class="relative group cursor-pointer overflow-hidden rounded-2xl border border-white/10 hover:border-cyber-cyan/50 transition-all">
-      <div class="absolute inset-0 bg-gradient-to-t from-deep-space via-transparent to-transparent z-10"></div>
-      <img src="@/assets/ads/antigravity-book.png" alt="Ebook Antigravity" class="w-full h-auto transform group-hover:scale-105 transition-transform duration-500" />
-      <div class="absolute bottom-0 left-0 right-0 p-4 z-20">
-        <span class="bg-cyber-cyan text-deep-space text-[10px] font-bold px-2 py-0.5 rounded mb-1 inline-block">PREMIUM</span>
-        <h4 class="font-bold text-white leading-tight">Domina el Agente</h4>
-        <p class="text-xs text-gray-mist mt-1">El Ebook oficial de Antigravity.</p>
+    <a 
+      href="https://ko-fi.com/s/a2f7374844" 
+      target="_blank" 
+      class="relative block group cursor-pointer overflow-hidden rounded-2xl border border-white/10 hover:border-cyber-cyan/50 transition-all shadow-lg hover:shadow-cyber-cyan/20"
+    >
+      <!-- Overlay de contraste mejorado -->
+      <div class="absolute inset-0 bg-gradient-to-t from-deep-space via-deep-space/40 to-transparent z-10 opacity-80 group-hover:opacity-90 transition-opacity"></div>
+      
+      <img 
+        src="@/assets/ads/antigravity-book.png" 
+        alt="Ebook Antigravity" 
+        class="w-full h-auto transform group-hover:scale-110 transition-transform duration-700 ease-out" 
+      />
+      
+      <div class="absolute bottom-0 left-0 right-0 p-5 z-20 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+        <span class="bg-cyber-cyan text-deep-space text-[10px] font-bold px-2 py-0.5 rounded mb-2 inline-block tracking-tighter shadow-glow-cyan-sm">TOP SELLER</span>
+        <h4 class="font-heading font-bold text-white text-lg leading-tight drop-shadow-md">Domina el Agente</h4>
+        <p class="text-xs text-gray-mist mt-1 mb-3 line-clamp-1 group-hover:text-white transition-colors">Guía definitiva de Antigravity.</p>
+        
+        <!-- Botón CTA -->
+        <div class="mt-2 py-2 px-4 bg-white/10 backdrop-blur-md border border-white/20 rounded-xl text-center text-xs font-bold text-white group-hover:bg-cyber-cyan group-hover:text-deep-space transition-all">
+          Ver eBook →
+        </div>
       </div>
-    </div>
+    </a>
   </div>
 </template>
 

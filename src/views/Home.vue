@@ -62,6 +62,17 @@
             </div>
           </div>
 
+          <!-- Acceso Rápido a Gestión de Agentes (NUEVO) -->
+          <div class="card-level p-6 relative overflow-hidden group cursor-pointer border-cyber-cyan/30 bg-cyber-cyan/5" @click="router.push('/module-3/level-1')">
+             <div class="absolute right-0 top-0 bottom-0 w-1/3 bg-gradient-to-l from-cyber-cyan/20 to-transparent pointer-events-none"></div>
+             <div class="absolute -top-2 -right-2 bg-cyber-cyan text-deep-space text-[8px] font-bold px-2 py-0.5 rounded-full uppercase tracking-tighter">Nuevo</div>
+             <h3 class="text-lg font-bold text-white mb-2 flex items-center gap-2">
+               <span>🎮</span> Gestión de Agentes
+             </h3>
+             <p class="text-sm text-gray-mist mb-4 pr-12">Configura la autonomía de tus enjambres y domina el Agent Manager.</p>
+             <span class="text-xs font-bold text-cyber-cyan group-hover:underline">Iniciar Misión →</span>
+          </div>
+
           <!-- Acceso Rápido a Bonus Tools -->
           <div class="card-level p-6 relative overflow-hidden group cursor-pointer" @click="router.push('/module-1/bonus-tools')">
              <div class="absolute right-0 top-0 bottom-0 w-1/3 bg-gradient-to-l from-soft-purple/20 to-transparent pointer-events-none"></div>

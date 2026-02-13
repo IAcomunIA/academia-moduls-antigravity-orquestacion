@@ -2,7 +2,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
 // Vistas principales (Imports estáticos para mejor rendimiento en local)
-import Home from '@/views/Home.vue'
+import LandingView from '@/views/LandingView.vue'
+import OnboardingView from '@/views/OnboardingView.vue'
 import WorldMap from '@/views/WorldMap.vue'
 import Dashboard from '@/views/Dashboard.vue'
 import NotFound from '@/views/NotFound.vue'
@@ -22,12 +23,26 @@ const Level6Parallel = () => import('@/modules/Module2AdvancedSkills/Level6Paral
 const Level7MCP = () => import('@/modules/Module2AdvancedSkills/Level7MCP.vue')
 const Level8RAG = () => import('@/modules/Module2AdvancedSkills/Level8RAG.vue')
 
+// Módulo 3: Sinergia
+const Level9Config = () => import('@/modules/Module3Synergy/Level9Config.vue')
+const Level10AdvancedAgents = () => import('@/modules/Module3Synergy/Level10AdvancedAgents.vue')
+const Level11MultiAgent = () => import('@/modules/Module3Synergy/Level11MultiAgent.vue')
+
+// Módulo 4: Arquitectura
+const LevelBuilder = () => import('@/modules/Module4Architect/Builder.vue')
+
 const routes = [
     {
         path: '/',
         name: 'Home',
-        component: Home,
-        meta: { title: 'Bienvenido', requiereOnboarding: false }
+        component: LandingView,
+        meta: { title: 'Antigravity Academy', requiereOnboarding: false }
+    },
+    {
+        path: '/onboarding',
+        name: 'Onboarding',
+        component: OnboardingView,
+        meta: { title: 'Identificación de Piloto', requiereOnboarding: false }
     },
     {
         path: '/map',
@@ -109,6 +124,20 @@ const routes = [
         component: Level8RAG,
         meta: { title: 'Nivel 8: Memory & RAG', requiereOnboarding: true }
     },
+    // Módulo 3
+    {
+        path: '/module-3/level-1',
+        name: 'Level9Config',
+        component: Level9Config,
+        meta: { title: 'Nivel 9: Gestión de Agentes', requiereOnboarding: true }
+    },
+    // Módulo 0
+    {
+        path: '/module-0/builder',
+        name: 'LevelBuilder',
+        component: LevelBuilder,
+        meta: { title: 'Taller de Arquitectura', requiereOnboarding: true }
+    },
     // Ruta catch-all 404
     {
         path: '/:pathMatch(.*)*',
@@ -127,7 +156,6 @@ const router = createRouter({
 })
 
 // === Función para verificar onboarding desde localStorage directamente ===
-// Evitamos importar el store aquí para no crear dependencia circular con Pinia
 function verificarOnboarding() {
     try {
         const raw = localStorage.getItem('antigravity-user')
@@ -139,16 +167,12 @@ function verificarOnboarding() {
     }
 }
 
-// === Navigation Guard: proteger rutas que requieren onboarding ===
+// === Navigation Guard ===
 router.beforeEach((to) => {
     const onboardingCompletado = verificarOnboarding()
-
-    // Si la ruta requiere onboarding y el usuario no lo ha completado → al Home
     if (to.meta.requiereOnboarding && !onboardingCompletado) {
         return { name: 'Home' }
     }
-
-
 })
 
 // Actualizar título de la página

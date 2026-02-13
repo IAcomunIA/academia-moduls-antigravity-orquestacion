@@ -1,6 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 // Configuración de Tailwind basada en el skill estilo-marca de Antigravity
 export default {
+    darkMode: 'class',
     content: [
         './index.html',
         './src/**/*.{vue,js,ts,jsx,tsx}'
@@ -9,6 +10,8 @@ export default {
         extend: {
             // Paleta de colores del skill estilo-marca
             colors: {
+                'dark-bg': '#0A0C1A',
+                'dark-card': '#11152C',
                 'deep-space': '#0A0E27',
                 'dark-void': '#070A1F',
                 'space-overlay': 'rgba(10,14,39,0.95)',
@@ -43,8 +46,13 @@ export default {
                 'fade-in': 'fade-in 0.25s ease-in',
                 'twinkle': 'twinkle 2s ease-in-out infinite',
                 'dash': 'dash 1s linear infinite',
+                'scan': 'scan 3s linear infinite',
             },
             keyframes: {
+                scan: {
+                    '0%': { transform: 'translateY(-100%)' },
+                    '100%': { transform: 'translateY(1000%)' },
+                },
                 float: {
                     '0%, 100%': { transform: 'translateY(0px)' },
                     '50%': { transform: 'translateY(-10px)' },

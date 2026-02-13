@@ -5,6 +5,24 @@ import { ref, computed } from 'vue'
 // Estructura de datos de los Módulos
 const MODULOS_DATOS = [
     {
+        id: 'module-0',
+        titulo: 'Fase 0: El Origen / Estructura',
+        descripcion: 'Construye y organiza la arquitectura base de tus proyectos antes de despegar.',
+        icono: '📐',
+        niveles: [
+            {
+                id: 'level-builder',
+                titulo: 'Arquitecto de Proyecto',
+                subtitulo: 'Drag & Drop Builder',
+                icono: '🏗️',
+                personaje: 'El Constructor',
+                ruta: '/module-0/builder',
+                xpRecompensa: 500,
+                badgeId: 'maestro-arquitecto'
+            }
+        ]
+    },
+    {
         id: 'module-1',
         titulo: 'Fase 1: Las 4 Capas',
         descripcion: 'Domina la arquitectura fundamental de la nueva era de agentes.',
@@ -108,21 +126,31 @@ const MODULOS_DATOS = [
         niveles: [
             {
                 id: 'level-9',
+                titulo: 'Gestión de Agentes',
+                subtitulo: 'Autonomía y Agent Manager',
+                icono: '🎮',
+                personaje: 'El Estratega',
+                ruta: '/module-3/level-1',
+                xpRecompensa: 400,
+                badgeId: 'arquitecto-agentes'
+            },
+            {
+                id: 'level-10',
                 titulo: 'Patrones de Diseño',
                 subtitulo: 'Chains, Routers & Loops',
                 icono: '🔄',
-                personaje: 'El Estratega',
-                ruta: '/module-3/level-1',
+                personaje: 'El Maestro',
+                ruta: '/module-3/level-2',
                 xpRecompensa: 400,
                 badgeId: 'arquitecto-patrones'
             },
             {
-                id: 'level-10',
+                id: 'level-11',
                 titulo: 'Human-in-the-loop',
                 subtitulo: 'Supervisión y Control',
                 icono: '👤',
                 personaje: 'El Supervisor',
-                ruta: '/module-3/level-2',
+                ruta: '/module-3/level-3',
                 xpRecompensa: 400,
                 badgeId: 'maestro-control'
             }
@@ -141,7 +169,8 @@ export const useModulesStore = defineStore('modules', () => {
     const modulos = computed(() => {
         return MODULOS_DATOS.map((modulo, mIndex) => {
             const nivelAnteriorModuloCompletado = mIndex === 0 ||
-                MODULOS_DATOS[mIndex - 1].niveles.every(n => progreso.value[n.id]?.completado)
+                modulos.value?.[mIndex - 1]?.niveles.every(n => progreso.value[n.id]?.completado) ||
+                modulo.id === 'module-3' // Temporales para testing
 
             return {
                 ...modulo,
@@ -157,7 +186,7 @@ export const useModulesStore = defineStore('modules', () => {
                         estrellas: prog.estrellas || 0,
                         hintsUsados: prog.hintsUsados || 0,
                         tiempoSegundos: prog.tiempoSegundos || 0,
-                        desbloqueado: nivelAnteriorModuloCompletado && (index === 0 || anteriorCompletado),
+                        desbloqueado: (nivelAnteriorModuloCompletado || modulo.id === 'module-3') && (index === 0 || anteriorCompletado),
                         estado: prog.completado ? 'completado' : (nivelAnteriorModuloCompletado && (index === 0 || anteriorCompletado)) ? 'disponible' : 'bloqueado'
                     }
                 })
@@ -166,6 +195,7 @@ export const useModulesStore = defineStore('modules', () => {
     })
 
     // Alias para compatibilidad con código existente
+    const modulo0 = computed(() => modulos.value.find(m => m.id === 'module-0'))
     const modulo1 = computed(() => modulos.value.find(m => m.id === 'module-1'))
     const modulo2 = computed(() => modulos.value.find(m => m.id === 'module-2'))
 
@@ -241,6 +271,7 @@ export const useModulesStore = defineStore('modules', () => {
         progreso,
         nivelActual,
         modulos,
+        modulo0,
         modulo1,
         modulo2,
         progresoModulo1,

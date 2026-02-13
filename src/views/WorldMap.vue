@@ -2,6 +2,11 @@
   <!-- Mapa de Niveles del Módulo 1 -->
   <div class="min-h-screen px-4 py-8 md:py-12">
     <div class="max-w-2xl mx-auto">
+      <!-- Publicidad Móvil (lg:hidden) -->
+      <div class="lg:hidden mb-8">
+        <MobileAdBanner />
+      </div>
+
       <!-- Lista de Módulos -->
       <div v-for="(modulo, mIndex) in modulesStore.modulos" :key="modulo.id" class="mb-20">
         <!-- Header del Módulo -->
@@ -65,6 +70,7 @@ import LevelNode from '@/components/game/LevelNode.vue'
 import XPBar from '@/components/game/XPBar.vue'
 import ProgressBar from '@/components/ui/ProgressBar.vue'
 import Button from '@/components/ui/Button.vue'
+import MobileAdBanner from '@/components/layout/MobileAdBanner.vue'
 
 const modulesStore = useModulesStore()
 </script>

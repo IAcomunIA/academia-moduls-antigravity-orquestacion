@@ -1,0 +1,276 @@
+{
+  "level_id": 9,
+  "title": "Maestría en Agentes",
+  "slug": "agentes-avanzado",
+  "character": "El Estratega",
+  "character_emoji": "🧠",
+  "character_color": "#00F0FF",
+  "intro_dialogue": [
+    {
+      "speaker": "El Estratega",
+      "text": "Comandante, has llegado al núcleo del sistema. Aquí no solo creas agentes... los haces vivir, respirar y decidir.",
+      "emotion": "greeting"
+    },
+    {
+      "speaker": "El Estratega",
+      "text": "¿Sabías que en Antigravity puedes tener decenas de agentes trabajando simultáneamente? Algunos los creas tú, otros nacen solos.",
+      "emotion": "explaining"
+    },
+    {
+      "speaker": "El Estratega",
+      "text": "Hoy aprenderás el arte de la autonomía, la magia de la programación asíncrona, y cómo tu flota de agentes opera en perfecta sincronía.",
+      "emotion": "excited"
+    },
+    {
+      "speaker": "El Estratega",
+      "text": "¿Listo para convertirte en un verdadero Arquitecto de Agentes?",
+      "emotion": "challenging"
+    }
+  ],
+  "theory": {
+    "sections": [
+      {
+        "id": "agent-manager",
+        "title": "Open Agent Manager: El Censo Digital",
+        "icon": "📊",
+        "content": "Imagina tener una flota de naves espaciales sin saber cuántas hay ni dónde están. El Open Agent Manager es tu panel de control central que responde: ¿Cuántos agentes tengo? ¿Qué están haciendo? ¿Quién los creó?",
+        "key_points": [
+          "Dashboard en tiempo real de todos los agentes activos",
+          "Registro automático: cada agente obtiene un ID único al nacer",
+          "Estados visibles: IDLE (esperando), BUSY (trabajando), COMPLETED (terminado), ERROR (falló)",
+          "Tracking de recursos: tokens consumidos, tiempo de ejecución, tareas completadas",
+          "Visibilidad total: User-defined vs Orchestrator-spawned"
+        ],
+        "analogy": "Es como el tablero de control de un aeropuerto: ves todos los aviones, sus destinos, si están en tierra o volando, y quién los asignó."
+      },
+      {
+        "id": "ciclo-vida",
+        "title": "Ciclo de Vida: ¿Quién Crea a Quién?",
+        "icon": "🧬",
+        "content": "En Antigravity, los agentes nacen de dos maneras. Esta distinción es fundamental para entender el flujo de trabajo.",
+        "code_example": "// AGENTES DEFINIDOS POR EL USUARIO (User-Defined)\n// Viven en: agents/tareas-investigacion.md\n{\n  'id': 'researcher',\n  'name': 'Agente Investigador',\n  'created_by': 'user',\n  'directive': 'Busca información en la web'\n}\n\n// AGENTES CREADOS DINÁMICAMENTE (Orchestrator-Spawned)\n// Nacen durante la ejecución cuando el orquestador decide\n{\n  'id': 'researcher_clone_01',\n  'name': 'Investigador Clonado',\n  'created_by': 'orchestrator',\n  'parent_task': 'investigacion_masiva',\n  'reason': 'Se necesitan 5 investigadores paralelos'\n}",
+        "key_points": [
+          "User-Defined: Tú los escribes en archivos .md en la carpeta agents/",
+          "Orchestrator-Spawned: El orquestador los clona dinámicamente cuando detecta que necesita más ayuda",
+          "Los agentes 'clonados' heredan la directiva del padre pero pueden especializarse",
+          "Todo agente, sin importar quién lo creó, aparece en el Agent Manager"
+        ],
+        "faq": [
+          {
+            "q": "¿Cuántos agentes puedo tener activos?",
+            "a": "No hay límite teórico, pero el orquestador gestiona recursos inteligentemente. Si hay muchos, algunos esperan turno."
+          },
+          {
+            "q": "¿Los agentes clonados desaparecen después?",
+            "a": "Sí, los agentes dinámicos tienen ciclo de vida temporal. Cuando terminan su tarea, se marcan como 'completados' y se archivan."
+          }
+        ]
+      },
+      {
+        "id": "autonomia",
+        "title": "Niveles de Autonomía: Decide vs Pregunta",
+        "icon": "⚖️",
+        "content": "Aquí está el corazón del control. ¿Confías en que tu agente tome decisiones solo, o prefieres supervisar cada paso?",
+        "code_example": "// CONFIGURACIÓN DE AUTONOMÍA\n{\n  'agent_id': 'content_writer',\n  'autonomy_level': 'ask',  // O: 'auto', 'hybrid'\n  \n  // ASK: Pregunta antes de actuar\n  // '¿Debería escribir sobre A o B?' → Espera tu respuesta\n  \n  // AUTO: Decide y ejecuta\n  // Decidió escribir sobre A, lo hace, reporta al final\n  \n  // HYBRID: Decide, pero confirma en casos críticos\n  // 'Elegí A con 70% confianza. ¿Está bien?'\n}",
+        "comparison_table": {
+          "headers": ["Modo", "Cuándo preguntar", "Velocidad", "Seguridad", "Mejor para"],
+          "rows": [
+            ["ASK (Pregunta)", "Siempre", "Lenta", "Máxima", "Depuración, tareas críticas"],
+            ["AUTO (Automático)", "Nunca", "Rápida", "Media", "Tareas repetitivas, flujos probados"],
+            ["HYBRID (Híbrido)", "Si incertidumbre > 60%", "Media", "Alta", "Balance entre velocidad y control"]
+          ]
+        },
+        "key_points": [
+          "ASK = Modo entrenamiento: el agente aprende de tus respuestas",
+          "AUTO = Modo producción: máxima eficiencia una vez que confías en el flujo",
+          "HYBRID = Modo inteligente: el agente evalúa su propia confianza antes de decidir",
+          "Puedes cambiar el modo en tiempo real desde el Agent Manager"
+        ]
+      },
+      {
+        "id": "async",
+        "title": "Programación Asíncrona: El Secreto de la Velocidad",
+        "icon": "⚡",
+        "content": "¿Por qué esperar cuando puedes hacer todo a la vez? La programación asíncrona permite que tus agentes trabajen simultáneamente sin bloquear el sistema.",
+        "code_example": "// SÍNCRONO (Secuencial) - Lento\n// Agente A → Espera → Agente B → Espera → Agente C\n// Tiempo total: 3 + 4 + 2 = 9 segundos\n\n// ASÍNCRONO (Paralelo) - Rápido\n// Agente A ─┐\n// Agente B ─┼→ Todos trabajan AL MISMO TIEMPO\n// Agente C ─┘\n// Tiempo total: 4 segundos (el más lento)\n\n// En código:\nconst resultados = await Promise.all([\n  agentA.ejecutar(),  // No bloquea\n  agentB.ejecutar(),  // No bloquea\n  agentC.ejecutar()   // No bloquea\n])\n// Espera aquí hasta que TODOS terminen",
+        "visual_explanation": {
+          "sync": "Un chef cocina: corta verduras → espera → hierve agua → espera → sala plato. Total: 30 min",
+          "async": "Tres chefs: uno corta, otro hierve, otro sala. Total: 12 min"
+        },
+        "key_points": [
+          "Asíncrono ≠ Al mismo tiempo exacto, sino 'no esperar innecesariamente'",
+          "El orquestador lanza agentes y continúa sin bloquearse",
+          "Promise.all() espera a que todos terminen antes de continuar",
+          "Ideal cuando los agentes NO dependen entre sí"
+        ]
+      },
+      {
+        "id": "paralelo-vs-secuencia",
+        "title": "Paralelo vs Secuencia: ¿Cuándo Usar Cada Uno?",
+        "icon": "🔄",
+        "content": "No todo se puede hacer en paralelo. A veces necesitas que un agente termine para que el siguiente empiece. El arte está en saber distinguir.",
+        "scenarios": [
+          {
+            "type": "paralelo",
+            "title": "✅ Ideal para Paralelo",
+            "example": "Crear un blog post:",
+            "tasks": [
+              "Agente A: Investigar el tema (5 min)",
+              "Agente B: Buscar imágenes relacionadas (3 min)",
+              "Agente C: Escribir código de ejemplo (4 min)"
+            ],
+            "why": "Ninguno necesita el resultado de otro",
+            "time_saved": "12 min secuencial → 5 min paralelo"
+          },
+          {
+            "type": "secuencial",
+            "title": "✅ Debe ser Secuencial",
+            "example": "Análisis de datos:",
+            "tasks": [
+              "Agente A: Limpiar datos crudos",
+              "Agente B: Analizar datos limpios (necesita A)",
+              "Agente C: Crear visualización (necesita B)"
+            ],
+            "why": "Cada paso necesita el resultado del anterior",
+            "time_saved": "No aplica - es obligatorio secuencial"
+          }
+        ],
+        "decision_tree": {
+          "question": "¿El Agente B necesita el output del Agente A?",
+          "yes": "→ Usa SECUENCIA",
+          "no": {
+            "question": "¿Los agentes comparten recursos limitados (ej: mismo archivo)?",
+            "yes": "→ Usa SECUENCIA (evita conflictos)",
+            "no": "→ Usa PARALELO (máxima velocidad)"
+          }
+        },
+        "key_points": [
+          "Paralelo cuando: Tareas independientes, recursos separados, máxima velocidad",
+          "Secuencial cuando: Dependencias de datos, orden lógico obligatorio, recursos compartidos",
+          "El orquestador decide automáticamente basado en el grafo de dependencias",
+          "Puedes forzar secuencia con 'depends_on' en la configuración"
+        ]
+      },
+      {
+        "id": "modulo-agentes",
+        "title": "Módulo Solo Agentes: Tu Flota Personal",
+        "icon": "🚀",
+        "content": "En Antigravity, puedes crear un módulo dedicado exclusivamente a la gestión de agentes. Es como tener un hangar de naves con control total.",
+        "code_example": "// Estructura del Módulo de Agentes\nagents/\n├── agent-config.yaml          # Configuración global\n├── research-agents/           # Agentes de investigación\n│   ├── web-searcher.md\n│   └── data-analyzer.md\n├── creative-agents/           # Agentes creativos\n│   ├── writer.md\n│   └── designer.md\n└── manager.md                 # Agente que supervisa a otros\n\n// agent-config.yaml\ndefault_autonomy: 'hybrid'\nmax_concurrent_agents: 10\nspawn_strategy: 'on_demand'  // o 'pre_warm'",
+        "key_points": [
+          "Agrupa agentes por función: research, coding, creative, qa",
+          "Configura valores por defecto para toda tu flota",
+          "Establece límites de recursos (máximo tokens, tiempo)",
+          "Define estrategia de spawn: bajo demanda o pre-calentados"
+        ]
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "lab-creacion",
+      "title": "Laboratorio: Creación de Agentes",
+      "type": "interactive_builder",
+      "description": "Crea 3 agentes especializados para un proyecto de e-commerce. Arrastra bloques para definir sus propiedades.",
+      "available_blocks": [
+        { "type": "role", "label": "Rol", "options": ["Investigador", "Programador", "Diseñador", "Tester"] },
+        { "type": "autonomy", "label": "Autonomía", "options": ["ASK", "AUTO", "HYBRID"] },
+        { "type": "creator", "label": "Creado por", "options": ["Usuario", "Orquestador"] }
+      ]
+    },
+    {
+      "id": "simulador-async",
+      "title": "Simulador: Paralelo vs Secuencial",
+      "type": "visual_simulator",
+      "description": "Arrastra 4 tareas al timeline y observa cómo cambia el tiempo total según el modo de ejecución.",
+      "tasks": [
+        { "name": "Investigar", "duration": 5, "dependencies": [] },
+        { "name": "Escribir", "duration": 8, "dependencies": ["Investigar"] },
+        { "name": "Buscar imgs", "duration": 3, "dependencies": [] },
+        { "name": "Publicar", "duration": 2, "dependencies": ["Escribir", "Buscar imgs"] }
+      ]
+    }
+  ],
+  "minigames": [
+    {
+      "id": "autonomy-matching",
+      "title": "Matching: Modo de Autonomía",
+      "type": "drag_match",
+      "instruction": "Conecta cada escenario con el nivel de autonomía más apropiado.",
+      "pairs": [
+        {
+          "scenario": "Migración de base de datos crítica",
+          "answer": "ASK",
+          "reason": "Tarea crítica, necesita supervisión humana en cada paso"
+        },
+        {
+          "scenario": "Generar 100 descripciones de producto",
+          "answer": "AUTO",
+          "reason": "Tarea repetitiva y probada, máxima velocidad"
+        },
+        {
+          "scenario": "Responder emails de soporte",
+          "answer": "HYBRID",
+          "reason": "Algunos simples (auto), otros complejos necesitan confirmación"
+        },
+        {
+          "scenario": "Depurar código en desarrollo",
+          "answer": "ASK",
+          "reason": "Modo debugging, quieres ver cada decisión"
+        }
+      ]
+    },
+    {
+      "id": "flow-decision",
+      "title": "¿Paralelo o Secuencial?",
+      "type": "quiz_cards",
+      "instruction": "Lee cada escenario y selecciona si debe ejecutarse en paralelo o secuencia.",
+      "scenarios": [
+        {
+          "text": "Tres agentes analizan el mismo documento desde diferentes ángulos (sentimiento, keywords, resumen)",
+          "correct": "paralelo",
+          "explanation": "Son análisis independientes del mismo input, pueden trabajar simultáneamente"
+        },
+        {
+          "text": "Agente A extrae datos → Agente B limpia datos → Agente C visualiza datos",
+          "correct": "secuencial",
+          "explanation": "Cada paso necesita el resultado del anterior, hay dependencia obligatoria"
+        },
+        {
+          "text": "5 agentes buscan información en 5 fuentes diferentes (Google, Twitter, Reddit, Noticias, Papers)",
+          "correct": "paralelo",
+          "explanation": "Búsquedas independientes, máxima velocidad con paralelismo"
+        },
+        {
+          "text": "Agente escribe código → Agente revisa código → Agente despliega código",
+          "correct": "secuencial",
+          "explanation": "Pipeline de CI/CD clásico, cada etapa depende de la anterior"
+        }
+      ]
+    }
+  ],
+  "rewards": {
+    "xp": 500,
+    "badge": {
+      "id": "arquitecto-agentes",
+      "name": "Arquitecto de Agentes",
+      "emoji": "🧬",
+      "description": "Dominaste la creación, autonomía y orquestación de agentes asíncronos"
+    },
+    "unlock": "Acceso a: Simulador avanzado de flotas"
+  },
+  "completion_summary": {
+    "title": "¡Maestría en Agentes Conseguida!",
+    "achievements": [
+      "Comprendiste el ciclo de vida completo de un agente",
+      "Dominas los 3 niveles de autonomía (ASK/AUTO/HYBRID)",
+      "Entiendes cuándo usar paralelismo vs secuencia",
+      "Sabes crear y gestionar flotas de agentes asíncronos"
+    ],
+    "next_steps": [
+      "Práctica: Crea tu primera flota de 5+ agentes",
+      "Experimento: Compara tiempos en paralelo vs secuencial",
+      "Desafío: Configura un agente híbrido complejo"
+    ]
+  }
+}
