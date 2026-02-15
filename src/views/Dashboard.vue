@@ -108,15 +108,21 @@
                 </div>
                 
                 <div class="flex flex-col items-end gap-1">
-                  <span
-                    v-if="modulo.desbloqueado"
-                    class="text-[10px] px-2 py-0.5 rounded-full font-bold border"
-                    :class="modulo.niveles.every(n => n.completado)
-                      ? 'bg-success-green/20 border-success-green/50 text-success-green'
-                      : 'bg-soft-purple/20 border-soft-purple/50 text-soft-purple'"
-                  >
-                    {{ modulo.niveles.every(n => n.completado) ? i18n.t('dashboard.moduleCompleted') : i18n.t('dashboard.moduleInProgress') }}
-                  </span>
+                  <template v-if="modulo.bloqueadoPorPro">
+                    <span class="text-[10px] px-2 py-0.5 rounded-full font-bold border bg-amber-500/20 border-amber-500/50 text-amber-500 flex items-center gap-1">
+                      PACK PRO 💎
+                    </span>
+                  </template>
+                  <template v-else-if="modulo.desbloqueado">
+                    <span
+                      class="text-[10px] px-2 py-0.5 rounded-full font-bold border"
+                      :class="modulo.niveles.every(n => n.completado)
+                        ? 'bg-success-green/20 border-success-green/50 text-success-green'
+                        : 'bg-soft-purple/20 border-soft-purple/50 text-soft-purple'"
+                    >
+                      {{ modulo.niveles.every(n => n.completado) ? i18n.t('dashboard.moduleCompleted') : i18n.t('dashboard.moduleInProgress') }}
+                    </span>
+                  </template>
                   <span v-else class="text-[10px] px-2 py-0.5 rounded-full font-bold border bg-gray-dim/20 border-gray-dim/50 text-gray-dim">
                     {{ i18n.t('dashboard.moduleBlocked') }} 🔒
                   </span>
@@ -152,10 +158,26 @@
                 </div>
               </div>
               
-              <div v-if="modulo.desbloqueado" class="mt-4 pt-4 border-t border-white/5 text-center">
-                 <router-link :to="modulo.niveles.find(n => !n.completado)?.ruta || modulo.niveles[0].ruta" class="text-sm text-cyber-cyan hover:text-white transition-colors font-medium">
+              <!-- Footer de Módulo (Botón Continuar o Bloqueado) -->
+              <div class="mt-4 pt-4 border-t border-white/5 text-center">
+                 <router-link 
+                   v-if="modulo.desbloqueado"
+                   :to="modulo.niveles.find(n => !n.completado)?.ruta || modulo.niveles[0].ruta" 
+                   class="text-sm text-cyber-cyan hover:text-white transition-colors font-medium"
+                 >
                    {{ modulo.niveles.every(n => n.completado) ? i18n.t('dashboard.reviewModule') : i18n.t('dashboard.continueMission') }} →
                  </router-link>
+                 <button 
+                   v-else-if="modulo.bloqueadoPorPro"
+                   @click="userStore.showAccessModal = true"
+                   class="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-gradient-to-r from-amber-400 to-amber-600 text-white font-bold uppercase tracking-widest text-xs shadow-glow-amber hover:scale-105 active:scale-95 transition-all animate-pulse-slow"
+                 >
+                   <span>DESBLOQUEAR PACKPRO</span>
+                   <span class="text-sm">💎</span>
+                 </button>
+                 <span v-else class="text-xs text-gray-dim italic">
+                   Completa el módulo anterior para continuar
+                 </span>
               </div>
             </div>
           </div>

@@ -128,6 +128,11 @@
   .gradient-border {
     border-image: linear-gradient(90deg, #00F0FF, #6B46C1) 1;
   }
+
+  /* Sombra glow ámbar para el botón PACKPRO */
+  .shadow-glow-amber {
+    box-shadow: 0 0 15px rgba(245, 158, 11, 0.4), 0 0 30px rgba(245, 158, 11, 0.2);
+  }
 }
 
 /* === UTILIDADES === */

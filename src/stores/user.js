@@ -20,6 +20,7 @@ export const useUserStore = defineStore('user', () => {
     const experienceLevel = ref('nada') // nada, algo, bastante
     const onboardingCompleted = ref(false)
     const hasProAccess = ref(false)
+    const showAccessModal = ref(false)
     const createdAt = ref(null)
 
     // === Computed ===
@@ -163,6 +164,7 @@ export const useUserStore = defineStore('user', () => {
         cargarDesdeLocalStorage,
         resetear,
         redeemCode,
-        hasProAccess
+        hasProAccess,
+        showAccessModal
     }
 })

@@ -47,8 +47,13 @@ export default {
                 'twinkle': 'twinkle 2s ease-in-out infinite',
                 'dash': 'dash 1s linear infinite',
                 'scan': 'scan 3s linear infinite',
+                'pulse-slow': 'pulse-slow 3s ease-in-out infinite',
             },
             keyframes: {
+                'pulse-slow': {
+                    '0%, 100%': { opacity: '1', transform: 'scale(1)' },
+                    '50%': { opacity: '0.9', transform: 'scale(1.02)' },
+                },
                 scan: {
                     '0%': { transform: 'translateY(-100%)' },
                     '100%': { transform: 'translateY(1000%)' },

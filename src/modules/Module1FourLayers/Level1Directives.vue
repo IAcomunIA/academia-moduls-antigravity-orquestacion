@@ -38,7 +38,7 @@
         </div>
 
         <div class="grid md:grid-cols-3 gap-4 mb-6">
-          <div class="md:col-span-2">
+          <div class="md:col-span-2 space-y-4">
             <CodeEditor
               instruccion="Un amigo te pide ayuda para crear un agente que lo ayude a estudiar para exámenes de matemáticas. Completa la directiva definiendo: Rol, Contexto y al menos 2 Constraints."
               :plantilla="plantillaEjercicio"
@@ -47,6 +47,24 @@
               :validador="validarDirectiva"
               @complete="completarEjercicio"
             />
+
+            <!-- Info Tips: IA & Markdown -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div class="p-4 bg-cyber-cyan/5 border border-cyber-cyan/20 rounded-xl flex gap-3">
+                <span class="text-xl">🤖</span>
+                <div class="text-[11px] leading-relaxed">
+                  <p class="text-cyber-cyan font-bold uppercase mb-1">Tip de Inteligencia Colectiva</p>
+                  <p class="text-gray-mist">Recuerda que puedes apoyarte en modelos de <strong>IA (LLMs)</strong> para reforzar tu análisis. ¡Úsalos como socios de brainstorming para pulir tus directivas!</p>
+                </div>
+              </div>
+              <div class="p-4 bg-soft-purple/5 border border-soft-purple/20 rounded-xl flex gap-3">
+                <span class="text-xl">📝</span>
+                <div class="text-[11px] leading-relaxed">
+                  <p class="text-soft-purple font-bold uppercase mb-1">Dominio de Markdown</p>
+                  <p class="text-gray-mist">El formato <strong>.md</strong> es el estándar para agentes. Usa <code>#</code> para títulos, <code>-</code> para listas y <code>**negrita**</code> para énfasis estructural.</p>
+                </div>
+              </div>
+            </div>
           </div>
           <div>
             <HintButton :hints="hintsEjercicio" @hint-used="(n) => hintsUsados = n" />

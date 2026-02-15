@@ -1,6 +1,7 @@
 // Store de módulos educativos: progreso por nivel, estrellas, contenido
 import { defineStore } from 'pinia'
 import { ref, computed } from 'vue'
+import { useUserStore } from './user'
 
 // Estructura de datos de los Módulos
 const MODULOS_DATOS = [
@@ -9,6 +10,7 @@ const MODULOS_DATOS = [
         titulo: 'Fase 0: El Origen / Estructura',
         descripcion: 'Construye y organiza la arquitectura base de tus proyectos antes de despegar.',
         icono: '📐',
+        requierePro: false,
         niveles: [
             {
                 id: 'level-builder',
@@ -27,6 +29,7 @@ const MODULOS_DATOS = [
         titulo: 'Fase 1: Las 4 Capas',
         descripcion: 'Domina la arquitectura fundamental de la nueva era de agentes.',
         icono: '🏗️',
+        requierePro: true,
         niveles: [
             {
                 id: 'level-1',
@@ -75,6 +78,7 @@ const MODULOS_DATOS = [
         titulo: 'Fase 2: Arquitectura Avanzada',
         descripcion: 'Skills, MCP y ejecución paralela de alto rendimiento.',
         icono: '⚙️',
+        requierePro: true,
         niveles: [
             {
                 id: 'level-5',
@@ -123,6 +127,7 @@ const MODULOS_DATOS = [
         titulo: 'Fase 3: Sinergia y Flujos',
         descripcion: 'Patrones de diseño avanzados y colaboración Humano-IA.',
         icono: '🤝',
+        requierePro: true,
         niveles: [
             {
                 id: 'level-9',
@@ -167,18 +172,27 @@ export const useModulesStore = defineStore('modules', () => {
 
     // Módulos con progreso integrado
     const modulos = computed(() => {
+        const userStore = useUserStore()
+
         return MODULOS_DATOS.map((modulo, mIndex) => {
             const nivelAnteriorModuloCompletado = mIndex === 0 ||
                 modulos.value?.[mIndex - 1]?.niveles.every(n => progreso.value[n.id]?.completado) ||
                 modulo.id === 'module-3' // Temporales para testing
 
+            const bloqueadoPorPro = modulo.requierePro && !userStore.hasProAccess
+
             return {
                 ...modulo,
-                desbloqueado: nivelAnteriorModuloCompletado,
+                bloqueadoPorPro,
+                desbloqueado: nivelAnteriorModuloCompletado && !bloqueadoPorPro,
                 niveles: modulo.niveles.map((nivel, index) => {
                     const prog = progreso.value[nivel.id] || {}
                     const nivelAnterior = index > 0 ? modulo.niveles[index - 1] : null
                     const anteriorCompletado = !nivelAnterior || (progreso.value[nivelAnterior.id]?.completado)
+
+                    const nivelDesbloqueado = (nivelAnteriorModuloCompletado || modulo.id === 'module-3') &&
+                        (index === 0 || anteriorCompletado) &&
+                        !bloqueadoPorPro
 
                     return {
                         ...nivel,
@@ -186,8 +200,8 @@ export const useModulesStore = defineStore('modules', () => {
                         estrellas: prog.estrellas || 0,
                         hintsUsados: prog.hintsUsados || 0,
                         tiempoSegundos: prog.tiempoSegundos || 0,
-                        desbloqueado: (nivelAnteriorModuloCompletado || modulo.id === 'module-3') && (index === 0 || anteriorCompletado),
-                        estado: prog.completado ? 'completado' : (nivelAnteriorModuloCompletado && (index === 0 || anteriorCompletado)) ? 'disponible' : 'bloqueado'
+                        desbloqueado: nivelDesbloqueado,
+                        estado: prog.completado ? 'completado' : (nivelDesbloqueado) ? 'disponible' : 'bloqueado'
                     }
                 })
             }

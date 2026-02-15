@@ -68,7 +68,7 @@
     <BadgeNotification />
 
     <!-- Modal de Acceso Restringido -->
-    <AccessCodeModal :is-open="showAccessModal" @close="showAccessModal = false" />
+    <AccessCodeModal :is-open="userStore.showAccessModal" @close="userStore.showAccessModal = false" />
   </div>
 </template>
 
@@ -76,6 +76,7 @@
 import { computed, watch, ref } from 'vue'
 import { useRoute } from 'vue-router'
 import { useUserStore } from '@/stores/user'
+import { useModulesStore } from '@/stores/modules'
 import BadgeNotification from '@/components/game/BadgeNotification.vue'
 import AccessCodeModal from '@/components/game/AccessCodeModal.vue'
 import SidebarLeft from '@/components/layout/SidebarLeft.vue'
@@ -85,20 +86,25 @@ import TheFooter from '@/components/layout/TheFooter.vue'
 
 const route = useRoute()
 const userStore = useUserStore()
+const modulesStore = useModulesStore()
 
 // Detectar si estamos en la Landing Page
 const esLanding = computed(() => route.path === '/')
 
 // === GUARDIA DE ACCESO ===
-const showAccessModal = ref(false)
-
-// Vigilar cambios de ruta para proteger módulos
 watch(
   () => route.path,
   (newPath) => {
-    // Si la ruta comienza con /module- y el usuario no tiene acceso PRO
-    if (newPath.startsWith('/module-') && !userStore.hasProAccess) {
-      showAccessModal.value = true
+    // Si la ruta comienza con /module-
+    if (newPath.startsWith('/module-')) {
+      // Extraer el ID del módulo (ej: /module-0/... -> module-0)
+      const moduleId = newPath.split('/')[1]
+      
+      const moduloObj = modulesStore.modulos.find(m => m.id === moduleId)
+
+      if (moduloObj?.bloqueadoPorPro) {
+        userStore.showAccessModal = true
+      }
     }
   },
   { immediate: true }
