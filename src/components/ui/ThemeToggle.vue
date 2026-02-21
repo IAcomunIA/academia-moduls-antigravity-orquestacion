@@ -1,21 +1,19 @@
 <template>
   <button
     @click="toggleTheme"
-    class="p-2 rounded-full bg-white/5 border border-white/10 text-gray-mist hover:text-cyber-cyan hover:bg-white/10 transition-all focus:outline-none"
+    class="p-2.5 rounded-full bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-slate-600 dark:text-gray-mist hover:text-amber-500 dark:hover:text-amber-400 hover:bg-slate-200 dark:hover:bg-white/10 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-cyan-300 dark:focus:ring-cyber-cyan/50"
     :title="isDark ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro'"
   >
-    <!-- Sun Icon (Show in dark to toggle light) -->
     <svg 
       v-if="isDark" 
       xmlns="http://www.w3.org/2000/svg" 
-      class="w-5 h-5 text-amber-400 shadow-glow-amber" 
+      class="w-5 h-5 text-amber-500" 
       fill="none" 
       viewBox="0 0 24 24" 
       stroke="currentColor"
     >
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707M17.657 17.657l.707.707M6.343 6.343l.707-.707ZM12 8a4 4 0 100 8 4 4 0 000-8z" />
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707M17.657 17.657l.707.707M6.343 6.343l.707-.707M12 8a4 4 0 100 8 4 4 0 000-8z" />
     </svg>
-    <!-- Moon Icon (Show in light to toggle dark) -->
     <svg 
       v-else 
       xmlns="http://www.w3.org/2000/svg" 
@@ -57,7 +55,6 @@ onMounted(() => {
   if (savedTheme === 'light') {
     isDark.value = false
   } else {
-    // Default strictly to dark
     isDark.value = true
   }
   

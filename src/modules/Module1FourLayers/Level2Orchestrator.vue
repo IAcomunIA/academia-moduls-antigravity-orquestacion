@@ -1,9 +1,7 @@
 <template>
-  <!-- Nivel 2: Orquestador - El Director de la Orquesta -->
-  <div class="min-h-screen px-4 py-8 md:py-12">
+  <div class="min-h-screen px-4 py-8 md:py-12 bg-gradient-to-b from-slate-50 to-slate-100 dark:from-dark-bg dark:to-deep-space transition-colors duration-500">
     <div class="max-w-4xl mx-auto">
 
-      <!-- === FASE 1: Intro === -->
       <section v-if="fase === 'intro'" class="flex items-center justify-center min-h-[70vh]">
         <div class="max-w-lg text-center space-y-6 animate-slide-up">
           <TheCoordinator :dialogo="dialogoActual" />
@@ -14,26 +12,24 @@
         </div>
       </section>
 
-      <!-- === FASE 2: Teoría === -->
       <section v-else-if="fase === 'teoria'">
         <div class="flex items-center gap-3 mb-6">
           <span class="text-2xl">🎭</span>
           <div>
-            <h1 class="font-heading font-bold text-xl text-cyber-cyan">Nivel 2: Orquestador</h1>
-            <p class="text-xs text-gray-mist">La Estrategia de los Checkpoints</p>
+            <h1 class="font-heading font-bold text-xl text-cyan-600 dark:text-cyber-cyan">Nivel 2: Orquestador</h1>
+            <p class="text-xs text-slate-500 dark:text-gray-mist">La Estrategia de los Checkpoints</p>
           </div>
         </div>
 
         <TheoryPanel :tabs="tabsTeoria" @complete="fase = 'ejercicio'" />
       </section>
 
-      <!-- === FASE 3: Ejercicio Práctico === -->
       <section v-else-if="fase === 'ejercicio'">
         <div class="flex items-center gap-3 mb-6">
           <span class="text-2xl">✍️</span>
           <div>
-            <h2 class="font-heading font-bold text-xl text-cyber-cyan">Práctica: Diseña el Flujo</h2>
-            <p class="text-xs text-gray-mist">Crea 3 Checkpoints para tu proyecto</p>
+            <h2 class="font-heading font-bold text-xl text-cyan-600 dark:text-cyber-cyan">Práctica: Diseña el Flujo</h2>
+            <p class="text-xs text-slate-500 dark:text-gray-mist">Crea 3 Checkpoints para tu proyecto</p>
           </div>
         </div>
 
@@ -52,8 +48,8 @@
             <HintButton :hints="contenido.exercise.validation.hints" @hint-used="(n) => hintsUsados = n" />
             
             <div class="card-space p-4 text-xs">
-              <h4 class="text-soft-purple font-bold mb-2 uppercase tracking-tighter">Tip del Orquestador</h4>
-              <p class="text-gray-mist leading-relaxed">
+              <h4 class="text-purple-600 dark:text-soft-purple font-bold mb-2 uppercase tracking-tighter">Tip del Orquestador</h4>
+              <p class="text-slate-600 dark:text-gray-mist leading-relaxed">
                 Cada **Checkpoint** debe ser una unidad de trabajo que se pueda marcar como "Hecho" antes de pasar a la siguiente.
               </p>
             </div>
@@ -61,18 +57,17 @@
         </div>
       </section>
 
-      <!-- === FASE 4: Mini-juego de Ordenamiento === -->
       <section v-else-if="fase === 'minijuego'">
         <div class="flex items-center gap-3 mb-6">
           <span class="text-2xl">🎮</span>
           <div>
-            <h2 class="font-heading font-bold text-xl text-cyber-cyan">Mini-Juego: El Orden Lógico</h2>
-            <p class="text-xs text-gray-mist">Ordena los pasos para construir una App exitosa</p>
+            <h2 class="font-heading font-bold text-xl text-cyan-600 dark:text-cyber-cyan">Mini-Juego: El Orden Lógico</h2>
+            <p class="text-xs text-slate-500 dark:text-gray-mist">Ordena los pasos para construir una App exitosa</p>
           </div>
         </div>
 
         <div class="card-level max-w-2xl mx-auto">
-          <p class="text-sm text-gray-mist mb-6 text-center">
+          <p class="text-sm text-slate-600 dark:text-gray-mist mb-6 text-center">
             Haz clic en los elementos en el orden secuencial correcto (del 1 al 5).
           </p>
 
@@ -87,17 +82,17 @@
             >
               <span class="text-sm font-medium">{{ item.text }}</span>
               <div class="flex items-center gap-2">
-                <span v-if="item.posicionActual" class="text-xs font-heading font-bold bg-soft-purple/20 text-soft-purple px-2 py-1 rounded">
+                <span v-if="item.posicionActual" class="text-xs font-heading font-bold bg-purple-100 dark:bg-soft-purple/20 text-purple-600 dark:text-soft-purple px-2 py-1 rounded">
                   Paso {{ item.posicionActual }}
                 </span>
-                <span v-if="item.error" class="text-error-red text-lg">❌</span>
-                <span v-if="item.completado" class="text-success-green text-lg">✅</span>
+                <span v-if="item.error" class="text-red-500 dark:text-error-red text-lg">❌</span>
+                <span v-if="item.completado" class="text-emerald-500 dark:text-success-green text-lg">✅</span>
               </div>
             </button>
           </div>
 
           <div v-if="minijuegoCompletado" class="text-center space-y-4 animate-bounce-in">
-            <p class="text-success-green font-heading font-bold text-lg">¡Logística Impecable! +75 XP</p>
+            <p class="text-emerald-600 dark:text-success-green font-heading font-bold text-lg">¡Logística Impecable! +75 XP</p>
             <Button size="lg" @click="fase = 'completado'">Ver Resultados →</Button>
           </div>
           
@@ -109,7 +104,6 @@
         </div>
       </section>
 
-      <!-- === FASE 5: Completado === -->
       <section v-else-if="fase === 'completado'" class="flex items-center justify-center min-h-[70vh]">
         <div class="max-w-lg text-center space-y-6 animate-slide-up">
           <div class="text-5xl">🏆</div>
@@ -117,29 +111,29 @@
           
           <div class="card-space">
             <div class="space-y-3 text-sm">
-              <div class="flex justify-between text-gray-mist">
+              <div class="flex justify-between text-slate-500 dark:text-gray-mist">
                 <span>Checkpoint Design</span>
-                <span class="text-success-green">✅</span>
+                <span class="text-emerald-500 dark:text-success-green">✅</span>
               </div>
-              <div class="flex justify-between text-gray-mist">
+              <div class="flex justify-between text-slate-500 dark:text-gray-mist">
                 <span>Lógica de Secuencia</span>
-                <span class="text-success-green">✅</span>
+                <span class="text-emerald-500 dark:text-success-green">✅</span>
               </div>
-              <hr class="border-gray-dim/20" />
+              <hr class="border-slate-200 dark:border-gray-dim/20" />
               <div class="flex justify-between">
-                <span class="text-gray-mist">Estrellas</span>
-                <span class="text-warning-yellow">{{ '⭐'.repeat(estrellas) }}{{ '☆'.repeat(3 - estrellas) }}</span>
+                <span class="text-slate-500 dark:text-gray-mist">Estrellas</span>
+                <span class="text-amber-500 dark:text-warning-yellow">{{ '⭐'.repeat(estrellas) }}{{ '☆'.repeat(3 - estrellas) }}</span>
               </div>
               <div class="flex justify-between">
-                <span class="text-gray-mist">XP acumulado</span>
-                <span class="text-cyber-cyan font-bold">+200 XP</span>
+                <span class="text-slate-500 dark:text-gray-mist">XP acumulado</span>
+                <span class="text-cyan-600 dark:text-cyber-cyan font-bold">+200 XP</span>
               </div>
             </div>
           </div>
 
-          <div class="card-character border-soft-purple/30">
-            <p class="text-xs text-soft-purple font-heading mb-2">🎭 TheCoordinator</p>
-            <p class="text-gray-mist text-sm italic">
+          <div class="card-character border-purple-200 dark:border-soft-purple/30">
+            <p class="text-xs text-purple-600 dark:text-soft-purple font-heading mb-2">🎭 TheCoordinator</p>
+            <p class="text-slate-600 dark:text-gray-mist text-sm italic">
               "Has alineado los instrumentos a la perfección. La sinfonía del desarrollo está por comenzar."
             </p>
           </div>
@@ -159,17 +153,14 @@ import { useUserStore } from '@/stores/user'
 import { useGameStore } from '@/stores/game'
 import { useModulesStore } from '@/stores/modules'
 
-// Componentes
 import Button from '@/components/ui/Button.vue'
 import TheoryPanel from '@/components/learning/TheoryPanel.vue'
 import CodeEditor from '@/components/learning/CodeEditor.vue'
 import HintButton from '@/components/learning/HintButton.vue'
 import TheCoordinator from './components/TheCoordinator.vue'
 
-// Datos
 import contenido from './content/level-2-orquestador.json'
 
-// Assets
 import orchestratorImg from '@/assets/images/orchestrator-concept.png'
 
 const router = useRouter()
@@ -182,7 +173,6 @@ const currentDialogueIdx = ref(0)
 const hintsUsados = ref(0)
 const errores = ref(0)
 
-// --- Intro ---
 const dialogoActual = computed(() => {
   return contenido.intro_dialogue[currentDialogueIdx.value]?.text || '...'
 })
@@ -195,7 +185,6 @@ function siguienteDialogo() {
   }
 }
 
-// --- Teoría ---
 const tabsTeoria = computed(() => {
   return contenido.theory.sections.map((section, index) => ({
     titulo: section.title,
@@ -209,17 +198,14 @@ const tabsTeoria = computed(() => {
   }))
 })
 
-// --- Ejercicio (Validator) ---
 function validarOrquestador(codigo) {
   const lower = codigo.toLowerCase()
   const contenidoLimpio = lower.replace(/\[\?\?\?\]/g, '')
   
-  // Buscar presencia de CP1, CP2, CP3
   const cp1 = lower.includes('checkpoint 1')
   const cp2 = lower.includes('checkpoint 2')
   const cp3 = lower.includes('checkpoint 3')
   
-  // Contar cuántos "objetivo", "agente" y "criterio" hay con contenido
   const countO = (contenidoLimpio.match(/objetivo:/g) || []).length
   const countA = (contenidoLimpio.match(/agente:/g) || []).length
   const countC = (contenidoLimpio.match(/criterio:/g) || []).length
@@ -246,7 +232,6 @@ function completarEjercicio() {
   fase.value = 'minijuego'
 }
 
-// --- Mini-juego (Sorting) ---
 const itemsMinijuego = ref(
   contenido.minigame.items.map(item => ({
     ...item,
@@ -281,9 +266,9 @@ function seleccionarItemMinijuego(item) {
 }
 
 function getEstiloItem(item) {
-  if (item.completado) return 'border-success-green bg-success-green/10 text-success-green'
-  if (item.error) return 'border-error-red bg-error-red/10 animate-shake'
-  return 'border-gray-dim/30 hover:border-soft-purple/50 bg-deep-space/40 text-gray-mist'
+  if (item.completado) return 'border-emerald-400 dark:border-success-green bg-emerald-50 dark:bg-success-green/10 text-emerald-600 dark:text-success-green'
+  if (item.error) return 'border-red-400 dark:border-error-red bg-red-50 dark:bg-error-red/10 animate-shake'
+  return 'border-slate-200 dark:border-gray-dim/30 hover:border-purple-300 dark:hover:border-soft-purple/50 bg-white dark:bg-deep-space/40 text-slate-600 dark:text-gray-mist'
 }
 
 function reiniciarMinijuego() {
@@ -295,7 +280,6 @@ function reiniciarMinijuego() {
   })
 }
 
-// --- Finalización ---
 const estrellas = computed(() => modulesStore.calcularEstrellas(hintsUsados.value, errores.value))
 
 function irSiguienteNivel() {

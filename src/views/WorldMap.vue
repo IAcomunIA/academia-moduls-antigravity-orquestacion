@@ -1,15 +1,11 @@
 <template>
-  <!-- Mapa de Niveles del Módulo 1 -->
-  <div class="min-h-screen px-4 py-8 md:py-12">
+  <div class="min-h-screen px-4 py-8 md:py-12 bg-gradient-to-b from-slate-50 to-slate-100 dark:from-dark-bg dark:to-deep-space transition-colors duration-500">
     <div class="max-w-2xl mx-auto">
-      <!-- Publicidad Móvil (lg:hidden) -->
       <div class="lg:hidden mb-8">
         <MobileAdBanner />
       </div>
 
-      <!-- Lista de Módulos -->
       <div v-for="(modulo, mIndex) in modulesStore.modulos" :key="modulo.id" class="mb-20">
-        <!-- Header del Módulo -->
         <div class="text-center mb-12" :class="{ 'opacity-50 grayscale': !modulo.desbloqueado }">
           <div class="flex items-center justify-center gap-2 mb-2">
             <span class="text-3xl">{{ modulo.icono }}</span>
@@ -17,7 +13,7 @@
               {{ modulo.titulo }}
             </h2>
           </div>
-          <p class="text-gray-mist text-sm max-w-md mx-auto">
+          <p class="text-slate-500 dark:text-gray-mist text-sm max-w-md mx-auto">
             {{ modulo.descripcion }}
           </p>
 
@@ -30,33 +26,28 @@
               color="purple"
             />
           </div>
-          <div v-else class="mt-4 inline-block px-3 py-1 rounded-full bg-error-red/10 border border-error-red/20 text-error-red text-[10px] uppercase font-bold tracking-widest">
+          <div v-else class="mt-4 inline-block px-3 py-1 rounded-full bg-red-50 dark:bg-error-red/10 border border-red-200 dark:border-error-red/20 text-red-600 dark:text-error-red text-[10px] uppercase font-bold tracking-widest">
             🔒 Módulo Bloqueado
           </div>
         </div>
 
-        <!-- Mapa vertical de niveles del módulo -->
         <div class="relative flex flex-col items-center gap-4" :class="{ 'pointer-events-none': !modulo.desbloqueado }">
           <div v-for="(nivel, index) in modulo.niveles" :key="nivel.id" class="flex flex-col items-center">
-            <!-- Camino luminoso -->
             <div
               v-if="index > 0"
               class="w-0.5 h-12 mb-4"
-              :class="nivel.desbloqueado ? 'bg-gradient-to-b from-cyber-cyan to-soft-purple' : 'bg-gray-dim/30'"
+              :class="nivel.desbloqueado ? 'bg-gradient-to-b from-cyan-500 to-purple-500 dark:from-cyber-cyan dark:to-soft-purple' : 'bg-slate-200 dark:bg-gray-dim/30'"
             />
 
-            <!-- Nodo del nivel -->
             <LevelNode :nivel="nivel" />
           </div>
 
-          <!-- Separador entre módulos -->
           <div v-if="mIndex < modulesStore.modulos.length - 1" class="w-1 h-20 mt-4 bg-dashed-line opacity-20" />
         </div>
       </div>
 
-      <!-- Enlace al dashboard -->
       <div class="mt-8 text-center">
-        <router-link to="/dashboard" class="btn-ghost text-sm">
+        <router-link to="/dashboard" class="btn-ghost text-sm text-slate-600 dark:text-gray-mist">
           🚀 Ver Nave de Comando
         </router-link>
       </div>

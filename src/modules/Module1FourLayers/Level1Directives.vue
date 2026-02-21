@@ -1,9 +1,7 @@
 <template>
-  <!-- Nivel 1: Directivas - El Corazón del Agente -->
-  <div class="min-h-screen px-4 py-8 md:py-12">
+  <div class="min-h-screen px-4 py-8 md:py-12 bg-gradient-to-b from-slate-50 to-slate-100 dark:from-dark-bg dark:to-deep-space transition-colors duration-500">
     <div class="max-w-4xl mx-auto">
 
-      <!-- === FASE 1: Intro del personaje === -->
       <section v-if="fase === 'intro'" class="flex items-center justify-center min-h-[70vh]">
         <div class="max-w-lg text-center space-y-6 animate-slide-up">
           <TheMaestro :dialogo="dialogoActual" />
@@ -14,26 +12,24 @@
         </div>
       </section>
 
-      <!-- === FASE 2: Teoría interactiva === -->
       <section v-else-if="fase === 'teoria'">
         <div class="flex items-center gap-3 mb-6">
           <span class="text-2xl">🏛️</span>
           <div>
-            <h1 class="font-heading font-bold text-xl text-cyber-cyan">Nivel 1: Directivas</h1>
-            <p class="text-xs text-gray-mist">El Corazón del Agente</p>
+            <h1 class="font-heading font-bold text-xl text-cyan-600 dark:text-cyber-cyan">Nivel 1: Directivas</h1>
+            <p class="text-xs text-slate-500 dark:text-gray-mist">El Corazón del Agente</p>
           </div>
         </div>
 
         <TheoryPanel :tabs="tabsTeoria" @complete="fase = 'ejercicio'" />
       </section>
 
-      <!-- === FASE 3: Ejercicio práctico === -->
       <section v-else-if="fase === 'ejercicio'">
         <div class="flex items-center gap-3 mb-6">
           <span class="text-2xl">✍️</span>
           <div>
-            <h2 class="font-heading font-bold text-xl text-cyber-cyan">Práctica: Tu Primera Directiva</h2>
-            <p class="text-xs text-gray-mist">Define un agente tutor de matemáticas</p>
+            <h2 class="font-heading font-bold text-xl text-cyan-600 dark:text-cyber-cyan">Práctica: Tu Primera Directiva</h2>
+            <p class="text-xs text-slate-500 dark:text-gray-mist">Define un agente tutor de matemáticas</p>
           </div>
         </div>
 
@@ -48,20 +44,19 @@
               @complete="completarEjercicio"
             />
 
-            <!-- Info Tips: IA & Markdown -->
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div class="p-4 bg-cyber-cyan/5 border border-cyber-cyan/20 rounded-xl flex gap-3">
+              <div class="p-4 bg-cyan-50 dark:bg-cyber-cyan/5 border border-cyan-200 dark:border-cyber-cyan/20 rounded-xl flex gap-3">
                 <span class="text-xl">🤖</span>
                 <div class="text-[11px] leading-relaxed">
-                  <p class="text-cyber-cyan font-bold uppercase mb-1">Tip de Inteligencia Colectiva</p>
-                  <p class="text-gray-mist">Recuerda que puedes apoyarte en modelos de <strong>IA (LLMs)</strong> para reforzar tu análisis. ¡Úsalos como socios de brainstorming para pulir tus directivas!</p>
+                  <p class="text-cyan-600 dark:text-cyber-cyan font-bold uppercase mb-1">Tip de Inteligencia Colectiva</p>
+                  <p class="text-slate-600 dark:text-gray-mist">Recuerda que puedes apoyarte en modelos de <strong>IA (LLMs)</strong> para reforzar tu análisis. ¡Úsalos como socios de brainstorming para pulir tus directivas!</p>
                 </div>
               </div>
-              <div class="p-4 bg-soft-purple/5 border border-soft-purple/20 rounded-xl flex gap-3">
+              <div class="p-4 bg-purple-50 dark:bg-soft-purple/5 border border-purple-200 dark:border-soft-purple/20 rounded-xl flex gap-3">
                 <span class="text-xl">📝</span>
                 <div class="text-[11px] leading-relaxed">
-                  <p class="text-soft-purple font-bold uppercase mb-1">Dominio de Markdown</p>
-                  <p class="text-gray-mist">El formato <strong>.md</strong> es el estándar para agentes. Usa <code>#</code> para títulos, <code>-</code> para listas y <code>**negrita**</code> para énfasis estructural.</p>
+                  <p class="text-purple-600 dark:text-soft-purple font-bold uppercase mb-1">Dominio de Markdown</p>
+                  <p class="text-slate-600 dark:text-gray-mist">El formato <strong>.md</strong> es el estándar para agentes. Usa <code class="bg-slate-200 dark:bg-white/10 px-1 rounded">#</code> para títulos, <code class="bg-slate-200 dark:bg-white/10 px-1 rounded">-</code> para listas y <code class="bg-slate-200 dark:bg-white/10 px-1 rounded">**negrita**</code> para énfasis estructural.</p>
                 </div>
               </div>
             </div>
@@ -72,17 +67,15 @@
         </div>
       </section>
 
-      <!-- === FASE 4: Mini-juego === -->
       <section v-else-if="fase === 'minijuego'">
         <div class="flex items-center gap-3 mb-6">
           <span class="text-2xl">🎮</span>
           <div>
-            <h2 class="font-heading font-bold text-xl text-cyber-cyan">Mini-Juego: Conecta los Conceptos</h2>
-            <p class="text-xs text-gray-mist">Arrastra cada componente a su definición</p>
+            <h2 class="font-heading font-bold text-xl text-cyan-600 dark:text-cyber-cyan">Mini-Juego: Conecta los Conceptos</h2>
+            <p class="text-xs text-slate-500 dark:text-gray-mist">Arrastra cada componente a su definición</p>
           </div>
         </div>
 
-        <!-- Juego de matching -->
         <div class="card-level max-w-2xl mx-auto">
           <div class="space-y-4">
             <div
@@ -90,18 +83,18 @@
               :key="idx"
               class="p-4 rounded-xl border transition-all duration-200"
               :class="pregunta.respondida
-                ? (pregunta.correcta ? 'border-success-green/50 bg-success-green/5' : 'border-error-red/50 bg-error-red/5')
-                : 'border-gray-dim/30 bg-deep-space/50'"
+                ? (pregunta.correcta ? 'border-emerald-300 dark:border-success-green/50 bg-emerald-50 dark:bg-success-green/5' : 'border-red-300 dark:border-error-red/50 bg-red-50 dark:bg-error-red/5')
+                : 'border-slate-200 dark:border-gray-dim/30 bg-white dark:bg-deep-space/50'"
             >
-              <p class="text-sm text-gray-mist mb-3">{{ pregunta.definicion }}</p>
+              <p class="text-sm text-slate-600 dark:text-gray-mist mb-3">{{ pregunta.definicion }}</p>
               <div class="flex gap-2 flex-wrap">
                 <button
                   v-for="opcion in pregunta.opciones"
                   :key="opcion"
                   class="px-3 py-1.5 rounded-lg text-xs font-medium transition-all duration-200"
                   :class="pregunta.seleccion === opcion
-                    ? (pregunta.correcta ? 'bg-success-green text-white' : 'bg-error-red text-white')
-                    : 'bg-soft-purple/20 text-soft-purple hover:bg-soft-purple/30'"
+                    ? (pregunta.correcta ? 'bg-emerald-500 dark:bg-success-green text-white' : 'bg-red-500 dark:bg-error-red text-white')
+                    : 'bg-purple-100 dark:bg-soft-purple/20 text-purple-600 dark:text-soft-purple hover:bg-purple-200 dark:hover:bg-soft-purple/30'"
                   :disabled="pregunta.correcta"
                   @click="responderMinijuego(idx, opcion)"
                 >
@@ -112,7 +105,7 @@
           </div>
 
           <div v-if="minijuegoCompleto" class="mt-6 text-center">
-            <p class="text-success-green font-heading font-semibold mb-3">
+            <p class="text-emerald-600 dark:text-success-green font-heading font-semibold mb-3">
               🎉 ¡Todos correctos! +75 XP
             </p>
             <Button @click="fase = 'completado'">
@@ -122,7 +115,6 @@
         </div>
       </section>
 
-      <!-- === FASE 5: Completado === -->
       <section v-else-if="fase === 'completado'" class="flex items-center justify-center min-h-[70vh]">
         <div class="max-w-lg text-center space-y-6 animate-slide-up">
           <div class="text-5xl">🎉</div>
@@ -131,34 +123,34 @@
           <div class="card-space">
             <div class="space-y-3 text-sm">
               <div class="flex justify-between">
-                <span class="text-gray-mist">Teoría dominada</span>
-                <span class="text-success-green">✅</span>
+                <span class="text-slate-500 dark:text-gray-mist">Teoría dominada</span>
+                <span class="text-emerald-500 dark:text-success-green">✅</span>
               </div>
               <div class="flex justify-between">
-                <span class="text-gray-mist">Ejercicio validado</span>
-                <span class="text-success-green">✅</span>
+                <span class="text-slate-500 dark:text-gray-mist">Ejercicio validado</span>
+                <span class="text-emerald-500 dark:text-success-green">✅</span>
               </div>
               <div class="flex justify-between">
-                <span class="text-gray-mist">Mini-juego superado</span>
-                <span class="text-success-green">✅</span>
+                <span class="text-slate-500 dark:text-gray-mist">Mini-juego superado</span>
+                <span class="text-emerald-500 dark:text-success-green">✅</span>
               </div>
-              <hr class="border-gray-dim/20" />
+              <hr class="border-slate-200 dark:border-gray-dim/20" />
               <div class="flex justify-between items-center">
-                <span class="text-gray-mist">Estrellas</span>
+                <span class="text-slate-500 dark:text-gray-mist">Estrellas</span>
                 <div>
                   <span v-for="i in 3" :key="i">{{ i <= estrellas ? '⭐' : '☆' }}</span>
                 </div>
               </div>
               <div class="flex justify-between">
-                <span class="text-gray-mist">XP ganado</span>
-                <span class="text-cyber-cyan font-bold">+{{ xpGanado }} XP</span>
+                <span class="text-slate-500 dark:text-gray-mist">XP ganado</span>
+                <span class="text-cyan-600 dark:text-cyber-cyan font-bold">+{{ xpGanado }} XP</span>
               </div>
             </div>
           </div>
 
           <div class="card-character">
-            <p class="text-xs text-soft-purple font-heading mb-2">🏛️ El Maestro</p>
-            <p class="text-gray-mist text-sm">
+            <p class="text-xs text-purple-600 dark:text-soft-purple font-heading mb-2">🏛️ El Maestro</p>
+            <p class="text-slate-600 dark:text-gray-mist text-sm">
               "Excelente trabajo, cadete. Has dominado el arte de las Directivas. ¡Ahora conocerás al Coordinador!"
             </p>
           </div>
@@ -179,7 +171,6 @@ import { useUserStore } from '@/stores/user'
 import { useGameStore } from '@/stores/game'
 import { useModulesStore } from '@/stores/modules'
 
-// Componentes UI/Juego
 import Button from '@/components/ui/Button.vue'
 import TheoryPanel from '@/components/learning/TheoryPanel.vue'
 import CodeEditor from '@/components/learning/CodeEditor.vue'
@@ -187,7 +178,6 @@ import HintButton from '@/components/learning/HintButton.vue'
 import Validator from '@/components/learning/Validator.vue'
 import TheMaestro from './components/TheMaestro.vue'
 
-// Datos
 import contenido from './content/level-1-directivas.json'
 
 const router = useRouter()
@@ -207,7 +197,6 @@ const currentDialogueIdx = ref(0)
 const hintsUsados = ref(0)
 const errores = ref(0)
 
-// Diálogo actual del intro con protección
 const dialogoActual = computed(() => {
   if (!contenido || !contenido.intro_dialogue) return '...'
   return contenido.intro_dialogue[currentDialogueIdx.value]?.text || ''
@@ -221,7 +210,6 @@ function siguienteDialogo() {
   }
 }
 
-// Convertir secciones de teoría del JSON al formato del TheoryPanel con protección
 const tabsTeoria = computed(() => {
   if (!contenido?.theory?.sections) return []
   return contenido.theory.sections.map(section => ({
@@ -235,7 +223,6 @@ const tabsTeoria = computed(() => {
   }))
 })
 
-// === Ejercicio ===
 const plantillaEjercicio = `# Directiva: Tutor de Matemáticas
 
 ## Rol
@@ -255,18 +242,15 @@ const hintsEjercicio = [
   'Ejemplo de solución: Rol = "Tutor paciente de álgebra y geometría para secundaria"'
 ]
 
-// Validador del ejercicio
 function validarDirectiva(codigo) {
   const lower = codigo.toLowerCase()
   
-  // Limpiamos el código de los placeholders para validar el contenido real
   const contenidoLimpio = lower.replace(/\[escribe aquí:?.*?\]/g, '')
   
   const tieneRol = lower.includes('## rol') && contenidoLimpio.split('## rol')[1]?.split('##')[0]?.trim().length > 5
   const tieneContexto = lower.includes('## contexto') && contenidoLimpio.split('## contexto')[1]?.split('##')[0]?.trim().length > 5
   const tieneConstraints = (lower.match(/^- .+/gm) || []).length >= 2
 
-  // Extraer el texto del rol para validar longitud
   const textoRol = contenidoLimpio.split('## rol')[1]?.split('##')[0]?.trim() || ''
   const rolSuficiente = textoRol.length > 10
 
@@ -304,7 +288,6 @@ function completarEjercicio() {
   fase.value = 'minijuego'
 }
 
-// === Mini-juego ===
 const preguntasMinijuego = ref([
   {
     definicion: 'Define QUÉ ES el agente y su área de expertise',
@@ -344,7 +327,6 @@ function responderMinijuego(idx, opcion) {
 
   if (!pregunta.correcta) {
     errores.value++
-    // Resetear después de 1s para reintentar
     setTimeout(() => {
       pregunta.respondida = false
       pregunta.seleccion = null
@@ -356,16 +338,14 @@ function responderMinijuego(idx, opcion) {
   }
 }
 
-// === Completado ===
 const estrellas = computed(() => modulesStore.calcularEstrellas(hintsUsados.value, errores.value))
 const xpGanado = computed(() => {
-  let total = 150 // Base
+  let total = 150
   if (hintsUsados.value === 0) total += 20
   return total
 })
 
 function irSiguienteNivel() {
-  // Registrar nivel completado
   modulesStore.completarNivel('level-1', estrellas.value, hintsUsados.value)
   gameStore.unlockBadge('arquitecto-directivas')
   gameStore.unlockBadge('navegante')

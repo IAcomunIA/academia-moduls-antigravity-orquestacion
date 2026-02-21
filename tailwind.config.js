@@ -1,5 +1,4 @@
 /** @type {import('tailwindcss').Config} */
-// Configuración de Tailwind basada en el skill estilo-marca de Antigravity
 export default {
     darkMode: 'class',
     content: [
@@ -8,7 +7,6 @@ export default {
     ],
     theme: {
         extend: {
-            // Paleta de colores del skill estilo-marca
             colors: {
                 'dark-bg': '#0A0C1A',
                 'dark-card': '#11152C',
@@ -31,14 +29,22 @@ export default {
                 'warning-yellow': '#F59E0B',
                 'error-red': '#EF4444',
                 'info-blue': '#3B82F6',
+                'light-bg': '#F8FAFC',
+                'light-card': '#FFFFFF',
+                'light-border': '#E2E8F0',
+                'light-hover': '#F1F5F9',
+                'light-text': '#1E293B',
+                'light-muted': '#64748B',
+                'cyan-light': '#06B6D4',
+                'cyan-soft': '#22D3EE',
+                'purple-light': '#7C3AED',
+                'purple-soft': '#A78BFA',
             },
-            // Tipografías del skill
             fontFamily: {
                 heading: ['Orbitron', 'sans-serif'],
                 body: ['Inter', 'sans-serif'],
                 code: ['Fira Code', 'monospace'],
             },
-            // Animaciones personalizadas
             animation: {
                 'float': 'float 3s ease-in-out infinite',
                 'glow-pulse': 'glow-pulse 2s ease-in-out infinite',
@@ -82,14 +88,15 @@ export default {
                     to: { strokeDashoffset: '-10' },
                 },
             },
-            // Sombras neón personalizadas
             boxShadow: {
                 'glow-cyan': '0 0 20px rgba(0,240,255,0.5), inset 0 0 10px rgba(0,240,255,0.2)',
                 'glow-cyan-lg': '0 0 30px rgba(0,240,255,0.6)',
                 'glow-purple': '0 0 20px rgba(139,92,246,0.5), inset 0 0 10px rgba(139,92,246,0.2)',
                 'glow-magenta': '0 0 20px rgba(255,0,255,0.5), inset 0 0 10px rgba(255,0,255,0.2)',
+                'glow-amber': '0 0 15px rgba(245,158,11,0.4)',
+                'card-light': '0 1px 3px rgba(0,0,0,0.05), 0 1px 2px rgba(0,0,0,0.03)',
+                'card-light-hover': '0 4px 12px rgba(0,0,0,0.08)',
             },
-            // Border radius personalizados
             borderRadius: {
                 'card': '16px',
                 'level': '20px',

@@ -1,27 +1,21 @@
 <template>
-  <!-- Nodo de nivel en el mapa de niveles -->
   <div
     class="flex flex-col items-center gap-2 group cursor-pointer"
     :class="{ 'opacity-40 pointer-events-none': nivel.estado === 'bloqueado' }"
     @click="navegarANivel"
   >
-    <!-- Nodo circular -->
     <div
       class="relative w-20 h-20 rounded-full flex items-center justify-center text-3xl transition-all duration-300"
       :class="nodoClasses"
     >
-      <!-- Candado para niveles bloqueados -->
       <span v-if="nivel.estado === 'bloqueado'">🔒</span>
-      <!-- Icono del nivel -->
       <span v-else>{{ nivel.icono }}</span>
 
-      <!-- Indicador de progreso (anillo) -->
       <div
         v-if="nivel.estado === 'disponible'"
-        class="absolute inset-0 rounded-full border-2 border-cyber-cyan animate-glow-pulse"
+        class="absolute inset-0 rounded-full border-2 border-cyan-500 dark:border-cyber-cyan animate-glow-pulse"
       />
 
-      <!-- Estrellas para completados -->
       <div
         v-if="nivel.completado"
         class="absolute -bottom-1 flex gap-0.5"
@@ -36,16 +30,14 @@
       </div>
     </div>
 
-    <!-- Título -->
     <span
       class="text-sm font-heading font-semibold text-center max-w-24 leading-tight transition-colors"
-      :class="nivel.completado ? 'text-cyber-cyan' : nivel.estado === 'disponible' ? 'text-white' : 'text-gray-dim'"
+      :class="nivel.completado ? 'text-cyan-600 dark:text-cyber-cyan' : nivel.estado === 'disponible' ? 'text-slate-800 dark:text-white' : 'text-slate-400 dark:text-gray-dim'"
     >
       {{ nivel.titulo }}
     </span>
 
-    <!-- Subtítulo -->
-    <span class="text-xs text-gray-mist text-center max-w-28 leading-tight">
+    <span class="text-xs text-slate-500 dark:text-gray-mist text-center max-w-28 leading-tight">
       {{ nivel.subtitulo }}
     </span>
   </div>
@@ -61,18 +53,16 @@ const props = defineProps({
 
 const router = useRouter()
 
-// Clases del nodo según estado
 const nodoClasses = computed(() => {
   if (props.nivel.completado) {
-    return 'bg-deep-purple/40 border-2 border-cyber-cyan shadow-glow-cyan'
+    return 'bg-purple-100 dark:bg-deep-purple/40 border-2 border-cyan-400 dark:border-cyber-cyan shadow-lg dark:shadow-glow-cyan'
   }
   if (props.nivel.estado === 'disponible') {
-    return 'bg-deep-space border-2 border-soft-purple hover:border-cyber-cyan hover:shadow-glow-cyan'
+    return 'bg-white dark:bg-deep-space border-2 border-purple-300 dark:border-soft-purple hover:border-cyan-400 dark:hover:border-cyber-cyan hover:shadow-lg dark:hover:shadow-glow-cyan'
   }
-  return 'bg-dark-void border-2 border-gray-dim/30'
+  return 'bg-slate-100 dark:bg-dark-void border-2 border-slate-200 dark:border-gray-dim/30'
 })
 
-// Navegar al nivel
 function navegarANivel() {
   if (props.nivel.estado !== 'bloqueado' && props.nivel.ruta) {
     router.push(props.nivel.ruta)
